@@ -16,7 +16,7 @@ namespace Common.Database.DataAccess.Implementation.Context
         
         public YourHelthContext(string serverName) : base(ConnectionString(serverName))
         {
-            //this.Database.CommandTimeout = 5;
+            this.Database.CommandTimeout = 5;
         }
 
         public YourHelthContext() : this(ServerName)
@@ -27,7 +27,6 @@ namespace Common.Database.DataAccess.Implementation.Context
         public DbSet<Conquest> Conquest { get; set; }
         public DbSet<Quest> Quest { get; set; }
         public DbSet<Prescription> Prescription { get; set; }
-        public DbSet<ActionTime> ActionTime { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
