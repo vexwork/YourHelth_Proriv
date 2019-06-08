@@ -8,23 +8,23 @@ using Common.Database.Dto;
 
 namespace Common.Database.DataAccess.Implementation
 {
-    public class UserDataAccess : IUserDataAccess, IDisposable
+    public class PatientDataAccess : IPatientDataAccess, IDisposable
     {
         private readonly YourHelthContext _context;
 
-        public UserDataAccess()
+        public PatientDataAccess()
         {
             _context = new YourHelthContext();
         }
 
-        public Task<User> GetUserByGuidAsync(Guid userId, CancellationToken cancellationToken)
+        public Task<Patient> GetPatientByGuidAsync(Guid userId, CancellationToken cancellationToken)
         {
             return _context.Users.Where(user => user.Guid == userId).FirstOrDefaultAsync(cancellationToken);
         }
 
-        public Task AddAsync(User user, CancellationToken cancellationToken)
+        public Task AddPatientAsync(Patient patient, CancellationToken cancellationToken)
         {
-            _context.Users.Add(user);
+            _context.Users.Add(patient);
             return _context.SaveChangesAsync(cancellationToken);
         }
 
