@@ -1,0 +1,9 @@
+namespace Common.Database.Dto
+{
+    public class User
+    {
+        public int Id { get; set; }
+
+        public int Name { get; set; }
+    }
+}
