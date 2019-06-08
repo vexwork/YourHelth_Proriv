@@ -16,17 +16,17 @@ namespace Common.Database.DataAccess.Implementation
 
         public PatientDataAccess()
         {
-            _context = new YourHelthContext();
+            _context = new YourHelthContext(@"localhost\SQLEXPRESS");
         }
 
         public Task<Patient> GetPatientByGuidAsync(Guid userId, CancellationToken cancellationToken)
         {
-            return _context.Patients.Where(patient => patient.Guid == userId).FirstOrDefaultAsync(cancellationToken);
+            return _context.Patient.Where(patient => patient.Guid == userId).FirstOrDefaultAsync(cancellationToken);
         }
 
         public Task AddPatientAsync(Patient patient, CancellationToken cancellationToken)
         {
-            _context.Patients.Add(patient);
+            _context.Patient.Add(patient);
             return _context.SaveChangesAsync(cancellationToken);
         }
 
@@ -39,8 +39,8 @@ namespace Common.Database.DataAccess.Implementation
             }
             else
             {
-                _context.Patients.Remove(oldPatient);
-                _context.Patients.Add(patient);
+                _context.Patient.Remove(oldPatient);
+                _context.Patient.Add(patient);
                 await _context.SaveChangesAsync(cancellationToken);
             }
         }
@@ -52,7 +52,7 @@ namespace Common.Database.DataAccess.Implementation
 
         public Task<List<Patient>> FindPatientsAsync(string name, string surname, string personalId, CancellationToken cancellationToken)
         {
-            var patients = _context.Patients.AsQueryable();
+            var patients = _context.Patient.AsQueryable();
             if (name != null)
             {
                 patients = patients.Where(p => p.FirstName == name);

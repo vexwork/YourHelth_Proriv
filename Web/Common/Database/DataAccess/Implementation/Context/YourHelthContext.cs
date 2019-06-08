@@ -23,7 +23,19 @@ namespace Common.Database.DataAccess.Implementation.Context
         {
         }
 
-        public DbSet<Patient> Patients { get; set; }
+        public DbSet<Patient> Patient { get; set; }
+        public DbSet<Conquest> Conquest { get; set; }
+        public DbSet<Quest> Quest { get; set; }
 
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Patient>()
+                .HasMany(c => c.Conquests)
+                .WithRequired(o => o.Patient);
+            modelBuilder.Entity<Conquest>()
+                .HasMany(c => c.Quests)
+                .WithRequired(o => o.Conquest);
+        }
     }
 }
