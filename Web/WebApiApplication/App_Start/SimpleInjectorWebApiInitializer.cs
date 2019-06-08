@@ -2,6 +2,8 @@
 
 
 using Common;
+using WebApiApplication.Services.Patients;
+using WebApiApplication.Services.Patients.Implementation;
 
 [assembly: WebActivator.PostApplicationStartMethod(typeof(WebApiApplication.App_Start.SimpleInjectorWebApiInitializer), "Initialize")]
 namespace WebApiApplication.App_Start
@@ -36,6 +38,7 @@ namespace WebApiApplication.App_Start
         {
             CommonLibrary.RegisterDependencyInjection(container);
             container.Register<IHomeControllerService, HomeControllerService>(Lifestyle.Singleton);
+            container.Register<IPatientsControllerService, PatientsControllerService>(Lifestyle.Singleton);
         }
     }
 }
