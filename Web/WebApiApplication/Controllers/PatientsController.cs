@@ -11,8 +11,6 @@ namespace WebApiApplication.Controllers
     /// <summary>
     /// Контроллер для работы с пациентами 
     /// </summary>
-    // Allow CORS for all origins. (Caution!)
-    //[EnableCors(origins: "*", headers: "*", methods: "*")]
     public class PatientsController : ApiController
     {
         private readonly IPatientsControllerService _patientsControllerService;

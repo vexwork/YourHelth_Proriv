@@ -28,8 +28,6 @@ namespace WebApiApplication
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
             var config = GlobalConfiguration.Configuration;
-            var cors = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(cors);
             
             config.Formatters.Remove((MediaTypeFormatter) config.Formatters.XmlFormatter);
             config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(
