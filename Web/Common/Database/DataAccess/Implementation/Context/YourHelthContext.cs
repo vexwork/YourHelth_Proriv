@@ -22,7 +22,7 @@ namespace Common.Database.DataAccess.Implementation.Context
         {
         }
 
-        public DbSet<Patient> Users { get; set; }
+        public DbSet<Patient> Patients { get; set; }
 
     }
 }
