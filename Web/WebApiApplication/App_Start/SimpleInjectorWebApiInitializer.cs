@@ -2,8 +2,12 @@
 
 
 using Common;
+using NLog;
+using WebApiApplication.Services.Logging;
+using WebApiApplication.Services.Logging.Implementation;
 using WebApiApplication.Services.Patients;
 using WebApiApplication.Services.Patients.Implementation;
+using WebApiApplication.Handlers;
 
 [assembly: WebActivator.PostApplicationStartMethod(typeof(WebApiApplication.App_Start.SimpleInjectorWebApiInitializer), "Initialize")]
 namespace WebApiApplication.App_Start
@@ -36,9 +40,11 @@ namespace WebApiApplication.App_Start
      
         private static void InitializeContainer(Container container)
         {
+            container.Register<ILoggingService, LoggingService>(Lifestyle.Singleton);
             CommonLibrary.RegisterDependencyInjection(container);
             container.Register<IHomeControllerService, HomeControllerService>(Lifestyle.Singleton);
             container.Register<IPatientsControllerService, PatientsControllerService>(Lifestyle.Singleton);
+            container.Register<LogRequestAndResponseHandler, LogRequestAndResponseHandler>(Lifestyle.Singleton);
         }
     }
 }

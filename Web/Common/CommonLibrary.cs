@@ -1,5 +1,4 @@
 using Common.Database.DataAccess;
-using Common.Database.DataAccess.Implementation;
 using SimpleInjector;
 
 namespace Common
