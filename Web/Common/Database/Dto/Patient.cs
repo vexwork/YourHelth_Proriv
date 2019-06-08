@@ -26,5 +26,12 @@ namespace Common.Database.Dto
         public string Patronymic { get; set; } = string.Empty;
 
         public List<Conquest> Conquests { get; set; }
+
+        /// <summary>
+        /// Общий рейтинг в системе
+        /// </summary>
+        [Required]
+        public double Rate { get; set; }
+
     }
 }

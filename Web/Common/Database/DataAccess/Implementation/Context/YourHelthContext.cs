@@ -26,6 +26,8 @@ namespace Common.Database.DataAccess.Implementation.Context
         public DbSet<Patient> Patient { get; set; }
         public DbSet<Conquest> Conquest { get; set; }
         public DbSet<Quest> Quest { get; set; }
+        public DbSet<Prescription> Prescription { get; set; }
+        public DbSet<ActionTime> ActionTime { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -49,8 +49,12 @@
     <Compile Include="Database\DataAccess\Implementation\Context\YourHelthContext.cs" />
     <Compile Include="Database\DataAccess\Implementation\PatientDataAccess.cs" />
     <Compile Include="Database\DataAccess\IPatientDataAccess.cs" />
+    <Compile Include="Database\Dto\ActionTime.cs" />
     <Compile Include="Database\Dto\Conquest.cs" />
+    <Compile Include="Database\Dto\Doctor.cs" />
     <Compile Include="Database\Dto\Patient.cs" />
+    <Compile Include="Database\Dto\Prescription.cs" />
+    <Compile Include="Database\Dto\PrescriptionTypes.cs" />
     <Compile Include="Database\Dto\Quest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -15,5 +15,14 @@ namespace Common.Database.Dto
 
         [Required]
         public Conquest Conquest { get; set; }
+
+        [Required]
+        public DateTime BeginTime { get; set; }
+
+        [Required]
+        public DateTime EndTime { get; set; }
+
+        [Required]
+        public List<Prescription> Prescriptions { get; set; }
     }
 }
