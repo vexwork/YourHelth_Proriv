@@ -1,16 +1,18 @@
 using System.Web.Http;
 using WebActivatorEx;
-using App;
+
+using WebApiApplication;
 using Swashbuckle.Application;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
-namespace App
+namespace WebApiApplication
 {
     public class SwaggerConfig
     {
         public static void Register()
         {
+            
             var thisAssembly = typeof(SwaggerConfig).Assembly;
 
             GlobalConfiguration.Configuration
@@ -101,7 +103,13 @@ namespace App
                         // those comments into the generated docs and UI. You can enable this by providing the path to one or
                         // more Xml comment files.
                         //
-                        //c.IncludeXmlComments(GetXmlCommentsPath());
+
+                        foreach (var xmlDoc in WebApplication.GetXmlDocs())
+                        {
+                            c.IncludeXmlComments(xmlDoc);
+                        }
+                        //c.IncludeXmlComments(Server.MapPath("/WebApiApplication.xml"));
+                        //c.IncludeXmlComments(Server.MapPath("/Common.xml"));
 
                         // Swashbuckle makes a best attempt at generating Swagger compliant JSON schemas for the various types
                         // exposed in your API. However, there may be occasions when more control of the output is needed.
