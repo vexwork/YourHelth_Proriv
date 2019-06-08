@@ -55,5 +55,13 @@ namespace WebApiApplication.Controllers
             await _patientsControllerService
                 .AddRandomPatientAsync(cancellationToken);
         }
+
+        [HttpGet]
+        [Route("v1/create-prescription/")]
+        public async Task CreatePrescriptionAsync(Guid guid, CancellationToken cancellationToken)
+        {
+            await _patientsControllerService
+                .AddRandomPatientAsync(cancellationToken);
+        }
     }
 }

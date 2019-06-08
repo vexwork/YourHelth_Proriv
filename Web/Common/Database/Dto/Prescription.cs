@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,5 +16,13 @@ namespace Common.Database.Dto
         
         [Required]
         public PrescriptionTypes Type { get; set; }
+
+        /// <summary>
+        /// Время лечения
+        /// </summary>
+        [Required]
+        public TimeSpan Duration { get; set; }
+
+        public List<ActionTime> ActionTimes { get; set; }
     }
 }

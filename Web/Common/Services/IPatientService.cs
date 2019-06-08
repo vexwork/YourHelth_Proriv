@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Common.Database.Dto;
 
-namespace Common.Database.DataAccess
+namespace Common.Services
 {
     public interface IPatientDataAccess
     {

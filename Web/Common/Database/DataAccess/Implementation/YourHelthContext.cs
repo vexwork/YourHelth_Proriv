@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Database.DataAccess.Implementation.Context
+namespace Common.Database.DataAccess.Implementation
 {
+
     [DbConfigurationType(typeof(DbConfigurationProvider))]
-    internal partial class YourHelthContext : DbContext
+    internal partial class YourHelthContext : DbContext, IYourHelthDataAccess
     {
 #if SQLEXPRESS
         private const string ServerName = @"localhost\SQLEXPRESS";
@@ -18,20 +19,16 @@ namespace Common.Database.DataAccess.Implementation.Context
 #endif
         private static string ConnectionString(string serverName) => $@"data source={serverName};initial catalog=YourHelthContext;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
 
-        public YourHelthContext(string serverName) : base(ConnectionString(serverName))
+        public YourHelthContext() : base(ConnectionString(ServerName))
         {
-            this.Database.CommandTimeout = 5;
-        }
-
-        public YourHelthContext() : this(ServerName)
-        {
+            Database.CommandTimeout = 10;
         }
 
         public DbSet<Patient> Patient { get; set; }
         public DbSet<Conquest> Conquest { get; set; }
         public DbSet<Quest> Quest { get; set; }
         public DbSet<Prescription> Prescription { get; set; }
-
+        public DbSet<ActionTime> ActionTime { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -1,5 +1,7 @@
 using Common.Database.DataAccess;
 using Common.Database.DataAccess.Implementation;
+using Common.Services;
+using Common.Services.Implementation;
 using SimpleInjector;
 
 namespace Common
@@ -9,6 +11,7 @@ namespace Common
         public static void RegisterDependencyInjection(Container container)
         {
             container.Register<IPatientDataAccess, PatientDataAccess>(Lifestyle.Singleton);
+            container.Register<IYourHelthDataAccess, YourHelthContext>(Lifestyle.Singleton);
         }
     }
 }
