@@ -16,6 +16,7 @@ namespace WebApiApplication.Services.Implementation
             _userDataAccess = userDataAccess;
         }
 
+        
         public async Task<HelloWorldResponse> GetHelloWorldAsync(CancellationToken cancellationToken)
         {
             var user = await _userDataAccess.GetPatientByGuidAsync(Guid.NewGuid(), cancellationToken);
