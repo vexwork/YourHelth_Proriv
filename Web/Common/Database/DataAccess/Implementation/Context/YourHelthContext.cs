@@ -14,7 +14,7 @@ namespace Common.Database.DataAccess.Implementation.Context
 #if SQLEXPRESS
         private const string ServerName = @"localhost\SQLEXPRESS";
 #else
-        private const string ServerName = @"(localdb)\MSSQLLocalDB";
+        private const string ServerName = @"DESKTOP-TAU7I9J";
 #endif
         private static string ConnectionString(string serverName) => $@"data source={serverName};initial catalog=YourHelthContext;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
 
