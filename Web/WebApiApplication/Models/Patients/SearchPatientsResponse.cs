@@ -13,6 +13,6 @@ namespace WebApiApplication.Models.Patients
         /// Список пациентов попавших в выборку
         /// </summary>
         [DataMember(Name = "patientsItems")]
-        public IList<SearchPatientsItem> PatientsItems { get; set; }
+        public IList<PatientModel> PatientsItems { get; set; }
     }
 }

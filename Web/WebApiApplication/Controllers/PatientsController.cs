@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -32,6 +33,20 @@ namespace WebApiApplication.Controllers
             return _patientsControllerService
                 .SearchPatientsAsync(request, cancellationToken);
         }
+
+        /// <summary>
+        /// Получает данные пациента по его идентификатору
+        /// </summary>
+        /// <param name="guid">Идентификатор пользователя</param>
+        /// <param name="cancellationToken">Токен отмены операции</param>
+        /// <returns>Возвращает данные по пациенту, если не найдено такого возвращает null</returns>
+        [HttpGet]
+        [Route("v1/get-patient")]
+        public Task<GetPatientResponse> GetPatientAsync(Guid guid, CancellationToken cancellationToken)
+        {
+            return _patientsControllerService.GetPatientAsync(guid, cancellationToken);
+        }
+
 
         [HttpGet]
         [Route("v1/generate-patient/")]

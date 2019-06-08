@@ -7,7 +7,7 @@ namespace WebApiApplication.Models.Patients
     /// Модель данных для результата поиска пациентов
     /// </summary>
     [DataContract]
-    public class SearchPatientsItem
+    public class PatientModel
     {
         /// <summary>
         /// Идентификатор пациента
@@ -32,5 +32,11 @@ namespace WebApiApplication.Models.Patients
         /// </summary>
         [DataMember(Name = "personalId")]
         public string PersonalId { get; set; }
+        
+        /// <summary>
+        /// Дата рождения
+        /// </summary>
+        [DataMember]
+        public DateTime BithDate { get; set; }
     }
 }

@@ -56,7 +56,8 @@
         </Compile>
         <Compile Include="Handlers\LogRequestAndResponseHandler.cs" />
         <Compile Include="Models\HelloWorldResponse.cs" />
-        <Compile Include="Models\Patients\SearchPatientsItem.cs" />
+        <Compile Include="Models\Patients\GetPatientResponse.cs" />
+        <Compile Include="Models\Patients\PatientModel.cs" />
         <Compile Include="Models\Patients\SearchPatientsRequest.cs" />
         <Compile Include="Models\Patients\SearchPatientsResponse.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

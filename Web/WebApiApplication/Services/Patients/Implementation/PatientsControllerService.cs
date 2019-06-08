@@ -29,6 +29,29 @@ namespace WebApiApplication.Services.Patients.Implementation
             await _userDataAccess.AddPatientAsync(new Patient() { FirstName = generateName(), LastName = generateName(), PersonalId = Guid.NewGuid().ToString() }, cancellationToken);
         }
 
+        public async Task<GetPatientResponse> GetPatientAsync(Guid guid, CancellationToken cancellationToken)
+        {
+            var patient = await _userDataAccess.GetPatientByGuidAsync(guid, cancellationToken);
+            if (patient == null)
+                return new GetPatientResponse
+                {
+                    Patient = null,
+                };
+
+            return new GetPatientResponse
+            {
+                Patient = new PatientModel
+                {
+                    Guid = patient.Guid,
+                    FirstName = patient.FirstName,
+                    LastName = patient.LastName,
+                    PersonalId = patient.PersonalId,
+                    BithDate = DateTime.Now.AddYears(-18),
+                }
+            };
+
+        }
+
         public async Task<SearchPatientsResponse> SearchPatientsAsync(SearchPatientsRequest request, CancellationToken cancellationToken)
         {
             var patients = await _userDataAccess.FindPatientsAsync(request.FirstName, request.LastName, request.PersonalId, cancellationToken);
@@ -37,7 +60,7 @@ namespace WebApiApplication.Services.Patients.Implementation
             {
                 PatientsItems = patients.Select(p => 
                 {
-                    return new SearchPatientsItem
+                    return new PatientModel
                     {
                         Guid = p.Guid,
                         FirstName = p.FirstName,
