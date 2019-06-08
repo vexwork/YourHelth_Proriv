@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using WebApiApplication.Models.Patients;
 using WebApiApplication.Services.Patients;
 
@@ -10,6 +11,8 @@ namespace WebApiApplication.Controllers
     /// <summary>
     /// Контроллер для работы с пациентами 
     /// </summary>
+    // Allow CORS for all origins. (Caution!)
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
     public class PatientsController : ApiController
     {
         private readonly IPatientsControllerService _patientsControllerService;
