@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using WebApiApplication.Models.Patients;
 using WebApiApplication.Services.Patients;
 

@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Remoting;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -27,6 +28,7 @@ namespace WebApiApplication
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
             var config = GlobalConfiguration.Configuration;
+            
             config.Formatters.Remove((MediaTypeFormatter) config.Formatters.XmlFormatter);
             config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(
                 (JsonConverter) new StringEnumConverter());

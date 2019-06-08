@@ -47,20 +47,23 @@ namespace Common.Database.DataAccess.Implementation
 
         public Task<List<Patient>> FindPatientsByPersonalIdAsync(string personalId, CancellationToken cancellationToken)
         {
-            return FindPatientsAsync(name: null, surname: null, personalId: personalId, cancellationToken);
+            return FindPatientsAsync(null, null, personalId, cancellationToken);
         }
 
-        public Task<List<Patient>> FindPatientsAsync(string name, string surname, string personalId, CancellationToken cancellationToken)
+        public Task<List<Patient>> FindPatientsAsync(string name, string surname, string personalId,
+            CancellationToken cancellationToken)
         {
             var patients = _context.Patient.AsQueryable();
             if (name != null)
             {
                 patients = patients.Where(p => p.FirstName == name);
             }
+
             if (surname != null)
             {
                 patients = patients.Where(p => p.LastName == surname);
             }
+
             if (personalId != null)
             {
                 patients = patients.Where(p => p.PersonalId == personalId);
