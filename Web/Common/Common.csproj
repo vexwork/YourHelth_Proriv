@@ -43,6 +43,8 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="CommonLibrary.cs" />
+		<Compile Include="Database\DataAccess\Implementation\Context\DbConfigurationProvider.cs" />
+		<Compile Include="Database\DataAccess\Implementation\Context\YourHelthContext.cs" />
         <Compile Include="Database\DataAccess\Implementation\UserDataAccess.cs" />
         <Compile Include="Database\DataAccess\IUserDataAccess.cs" />
         <Compile Include="Database\Dto\User.cs" />
@@ -54,6 +56,11 @@
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="EntityFramework">
+        <Version>6.2.0</Version>
+      </PackageReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

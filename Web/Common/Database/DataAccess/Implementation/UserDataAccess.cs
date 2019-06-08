@@ -31,13 +31,6 @@ namespace Common.Database.DataAccess.Implementation
         void IDisposable.Dispose()
         {
             _context.Dispose();
-            return Task.FromResult(new
-                User
-                {
-                    Guid = Guid.NewGuid(),
-                    Name = "Vasya",
-                }
-            );
         }
     }
 }
