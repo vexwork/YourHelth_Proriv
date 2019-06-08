@@ -7,6 +7,9 @@ using WebApiApplication.Services.Patients;
 
 namespace WebApiApplication.Controllers
 {
+    /// <summary>
+    /// Контроллер для работы с пациентами 
+    /// </summary>
     public class PatientsController : ApiController
     {
         private readonly IPatientsControllerService _patientsControllerService;
@@ -16,6 +19,10 @@ namespace WebApiApplication.Controllers
             _patientsControllerService = patientsControllerService;
         }
 
+        /// <summary>
+        /// Ищет пациентов по заданным в запросе параметрам
+        /// Если не найдено ни одного пациента удовлетворяющего условиям возвращается пустой список
+        /// </summary>
         [HttpPost]
         [Route("v1/search-patients/")]
         public Task<SearchPatientsResponse> SearchPatientsAsync(SearchPatientsRequest request,

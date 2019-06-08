@@ -1,4 +1,9 @@
-﻿using System.Net.Http.Formatting;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Net.Http.Formatting;
+using System.Runtime.CompilerServices;
+using System.Runtime.Remoting;
+using System.Web;
 using System.Web.Http;
 using Common;
 using Newtonsoft.Json;
@@ -43,6 +48,15 @@ namespace WebApiApplication
 
             GlobalConfiguration.Configuration.DependencyResolver =
                 new SimpleInjectorWebApiDependencyResolver(_container);
+        }
+
+        public static IEnumerable<string> GetXmlDocs()
+        {
+            return new[]
+            {
+                Path.Combine(HttpRuntime.AppDomainAppPath, "bin", "Common.xml"),
+                Path.Combine(HttpRuntime.AppDomainAppPath, "bin", "WebApiApplication.xml"),
+            };
         }
     }
 }
