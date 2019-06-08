@@ -33,7 +33,7 @@ namespace Common.Database.DataAccess.Implementation
         public async Task AddOrUpdatePatientAsync(Patient patient, CancellationToken cancellationToken)
         {
             var oldPatient = await GetPatientByGuidAsync(patient.Guid, cancellationToken);
-            if(oldPatient == null)
+            if (oldPatient == null)
             {
                 await AddPatientAsync(patient, cancellationToken);
             }
@@ -47,20 +47,23 @@ namespace Common.Database.DataAccess.Implementation
 
         public Task<List<Patient>> FindPatientsByPersonalIdAsync(string personalId, CancellationToken cancellationToken)
         {
-            return FindPatientsAsync(name: null, surname: null, personalId: personalId, cancellationToken);
+            return FindPatientsAsync(null, null, personalId, cancellationToken);
         }
 
-        public Task<List<Patient>> FindPatientsAsync(string name, string surname, string personalId, CancellationToken cancellationToken)
+        public Task<List<Patient>> FindPatientsAsync(string name, string surname, string personalId,
+            CancellationToken cancellationToken)
         {
             var patients = _context.Patients.AsQueryable();
-            if(name != null)
+            if (name != null)
             {
                 patients = patients.Where(p => p.Name == name);
             }
+
             if (surname != null)
             {
                 patients = patients.Where(p => p.Surname == surname);
             }
+
             if (personalId != null)
             {
                 patients = patients.Where(p => p.PersonalId == personalId);
