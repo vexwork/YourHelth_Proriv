@@ -5,8 +5,8 @@ using Common.Database.Dto;
 
 namespace Common.Database.DataAccess
 {
-    public interface IUserDataAccess
+    public interface IPatientDataAccess
     {
-        Task<User> GetUserByGuidAsync(Guid userId, CancellationToken cancellationToken);
+        Task<Patient> GetPatientByGuidAsync(Guid patientId, CancellationToken cancellationToken);
     }
 }

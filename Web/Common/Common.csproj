@@ -54,9 +54,9 @@
         <Compile Include="CommonLibrary.cs" />
 		<Compile Include="Database\DataAccess\Implementation\Context\DbConfigurationProvider.cs" />
 		<Compile Include="Database\DataAccess\Implementation\Context\YourHelthContext.cs" />
-        <Compile Include="Database\DataAccess\Implementation\UserDataAccess.cs" />
-        <Compile Include="Database\DataAccess\IUserDataAccess.cs" />
-        <Compile Include="Database\Dto\User.cs" />
+		<Compile Include="Database\DataAccess\Implementation\PatientDataAccess.cs" />
+        <Compile Include="Database\DataAccess\IPatientDataAccess.cs" />
+        <Compile Include="Database\Dto\Patient.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>

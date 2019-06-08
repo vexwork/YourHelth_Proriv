@@ -8,17 +8,17 @@ namespace WebApiApplication.Services.Implementation
 {
     internal class HomeControllerService : IHomeControllerService
     {
-        private readonly IUserDataAccess _userDataAccess;
+        private readonly IPatientDataAccess _userDataAccess;
         
 
-        public HomeControllerService(IUserDataAccess userDataAccess)
+        public HomeControllerService(IPatientDataAccess userDataAccess)
         {
             _userDataAccess = userDataAccess;
         }
 
         public async Task<HelloWorldResponse> GetHelloWorldAsync(CancellationToken cancellationToken)
         {
-            var user = await _userDataAccess.GetUserByGuidAsync(Guid.NewGuid(), cancellationToken);
+            var user = await _userDataAccess.GetPatientByGuidAsync(Guid.NewGuid(), cancellationToken);
 
             if (user == null)
             {

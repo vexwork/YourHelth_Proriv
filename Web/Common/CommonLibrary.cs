@@ -8,7 +8,7 @@ namespace Common
     {
         public static void RegisterDependencyInjection(Container container)
         {
-            container.Register<IUserDataAccess, UserDataAccess>(Lifestyle.Singleton);
+            container.Register<IPatientDataAccess, PatientDataAccess>(Lifestyle.Singleton);
         }
     }
 }
