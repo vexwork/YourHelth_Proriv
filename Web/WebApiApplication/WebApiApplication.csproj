@@ -45,6 +45,7 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Compile Include="App_Start\SimpleInjectorWebApiInitializer.cs" />
         <Compile Include="App_Start\SwaggerConfig.cs" />
         <Compile Include="Configure\WebApiConfig.cs" />
         <Compile Include="Controllers\HomeController.cs" />
@@ -53,6 +54,8 @@
         </Compile>
         <Compile Include="Models\HelloWorldResponse.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Services\IHomeControllerService.cs" />
+        <Compile Include="Services\Implementation\HomeControllerService.cs" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="Global.asax" />
@@ -76,6 +79,14 @@
         <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
         <Private>True</Private>
       </Reference>
+      <Reference Include="SimpleInjector, Version=4.6.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99">
+        <HintPath>..\packages\SimpleInjector.4.6.0\lib\net45\SimpleInjector.dll</HintPath>
+        <Private>True</Private>
+      </Reference>
+      <Reference Include="SimpleInjector.Integration.WebApi, Version=4.6.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99">
+        <HintPath>..\packages\SimpleInjector.Integration.WebApi.4.6.0\lib\net45\SimpleInjector.Integration.WebApi.dll</HintPath>
+        <Private>True</Private>
+      </Reference>
       <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc">
         <HintPath>packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
         <Private>True</Private>
@@ -94,6 +105,10 @@
         <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
         <Private>True</Private>
       </Reference>
+      <Reference Include="WebActivator, Version=1.4.4.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
+        <Private>True</Private>
+      </Reference>
       <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4">
         <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
         <Private>True</Private>
@@ -101,6 +116,12 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="App_Start" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Common\Common.csproj">
+        <Project>{81e357da-cf7f-44e8-9145-816a1c02218b}</Project>
+        <Name>Common</Name>
+      </ProjectReference>
     </ItemGroup>
     <PropertyGroup>
         <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

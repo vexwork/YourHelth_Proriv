@@ -9,7 +9,13 @@ namespace Common.Database.DataAccess.Implementation
     {
         public Task<User> GetUserByGuidAsync(Guid userId, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(new
+                User
+                {
+                    Guid = Guid.NewGuid(),
+                    Name = "Vasya",
+                }
+            );
         }
     }
 }
