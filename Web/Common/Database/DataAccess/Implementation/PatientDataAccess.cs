@@ -16,7 +16,7 @@ namespace Common.Database.DataAccess.Implementation
 
         public PatientDataAccess()
         {
-            _context = new YourHelthContext(@"localhost\SQLEXPRESS");
+            _context = new YourHelthContext();
         }
 
         public Task<Patient> GetPatientByGuidAsync(Guid userId, CancellationToken cancellationToken)

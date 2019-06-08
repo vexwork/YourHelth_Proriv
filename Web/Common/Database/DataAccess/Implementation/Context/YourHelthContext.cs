@@ -11,9 +11,13 @@ namespace Common.Database.DataAccess.Implementation.Context
     [DbConfigurationType(typeof(DbConfigurationProvider))]
     internal partial class YourHelthContext : DbContext
     {
+#if SQLEXPRESS
+        private const string ServerName = @"localhost\SQLEXPRESS";
+#else
         private const string ServerName = @"(localdb)\MSSQLLocalDB";
+#endif
         private static string ConnectionString(string serverName) => $@"data source={serverName};initial catalog=YourHelthContext;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
-        
+
         public YourHelthContext(string serverName) : base(ConnectionString(serverName))
         {
             this.Database.CommandTimeout = 5;
