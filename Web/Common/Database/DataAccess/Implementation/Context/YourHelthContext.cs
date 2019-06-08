@@ -16,7 +16,7 @@ namespace Common.Database.DataAccess.Implementation.Context
         
         public YourHelthContext(string serverName) : base(ConnectionString(serverName))
         {
-            //this.Database.CommandTimeout = 5;
+            this.Database.CommandTimeout = 5;
         }
 
         public YourHelthContext() : this(ServerName)

@@ -12,19 +12,8 @@ namespace Common.Database.Dto
 
         [Required]
         public string Name { get; set; }
-
-        [Required]
-        public Quest Quest { get; set; }
-
+        
         [Required]
         public PrescriptionTypes Type { get; set; }
-
-        /// <summary>
-        /// Время лечения
-        /// </summary>
-        [Required]
-        public TimeSpan Duration { get; set; }
-
-        public List<ActionTime> ActionTimes { get; set; }
     }
 }
