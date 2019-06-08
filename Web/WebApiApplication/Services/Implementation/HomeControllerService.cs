@@ -31,7 +31,7 @@ namespace WebApiApplication.Services.Implementation
 
             return new HelloWorldResponse
             {
-                Message = $"Hello, world !!! And You {user.Name} : {user.Guid}",
+                Message = $"Hello, world !!! And You {user.FirstName} : {user.Guid}",
                 Status = Status.Ok,
             };
         }

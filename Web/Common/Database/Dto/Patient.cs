@@ -7,13 +7,13 @@ namespace Common.Database.Dto
     public class Patient
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Guid { get; set; }
+        public Guid Guid { get; protected set; }
 
         [Required]
-        public string Name { get; set; }
+        public string FirstName { get; set; } 
 
         [Required]
-        public string Surname { get; set; }
+        public string LastName { get; set; } 
 
         /// <summary>
         /// —Õ»À—
@@ -22,6 +22,6 @@ namespace Common.Database.Dto
         public string PersonalId { get; set; }
 
         [Required(AllowEmptyStrings = true)]
-        public string Patronymic { get; set; }
+        public string Patronymic { get; set; } = string.Empty;
     }
 }

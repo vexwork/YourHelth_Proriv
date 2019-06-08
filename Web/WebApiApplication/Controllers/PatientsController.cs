@@ -24,5 +24,13 @@ namespace WebApiApplication.Controllers
             return _patientsControllerService
                 .SearchPatientsAsync(request, cancellationToken);
         }
+
+        [HttpGet]
+        [Route("v1/generate-patient/")]
+        public async Task AddRandomPatientsAsync(CancellationToken cancellationToken)
+        {
+            await _patientsControllerService
+                .AddRandomPatientAsync(cancellationToken);
+        }
     }
 }
