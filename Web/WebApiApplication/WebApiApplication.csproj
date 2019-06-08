@@ -56,7 +56,7 @@
     <Compile Include="Models\Patients\PatientModel.cs" />
     <Compile Include="Models\Patients\SearchPatientsRequest.cs" />
     <Compile Include="Models\Patients\SearchPatientsResponse.cs" />
-    <Compile Include="Models\Prescriptions\AddPrescriptionResponse.cs" />
+    <Compile Include="Models\Prescriptions\AddPrescriptionRequest.cs" />
     <Compile Include="Models\Prescriptions\PrescriptionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Conquest\Implementation\ConquestControllerService.cs" />

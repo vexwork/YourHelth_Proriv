@@ -6,7 +6,7 @@ using Common.Database.Dto;
 
 namespace Common.Services
 {
-    public interface IPatientDataAccess
+    public interface IPatientService
     {
         Task AddOrUpdatePatientAsync(Patient patient, CancellationToken cancellationToken);
         Task AddPatientAsync(Patient patient, CancellationToken cancellationToken);

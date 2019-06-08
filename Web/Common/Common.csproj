@@ -75,6 +75,8 @@
     <Compile Include="Database\Dto\Quest.cs" />
     <Compile Include="Data\QuestState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IConquestService.cs" />
+    <Compile Include="Services\Implementation\ConquestService.cs" />
     <Compile Include="Services\Implementation\PatientService.cs" />
     <Compile Include="Services\IPatientService.cs" />
   </ItemGroup>

@@ -7,8 +7,11 @@ using System.Web;
 namespace WebApiApplication.Models.Prescriptions
 {
     [DataContract]
-    public class AddPrescriptionResponse
+    public class AddPrescriptionRequest
     {
+        [DataMember]
+        public Guid ConquestId { get; set; }
+
         [DataMember]
         public PrescriptionModel Prescription { get; set; }
     }

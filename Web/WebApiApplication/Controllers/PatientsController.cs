@@ -61,7 +61,7 @@ namespace WebApiApplication.Controllers
         public async Task CreatePrescriptionAsync(Guid guid, CancellationToken cancellationToken)
         {
             await _patientsControllerService
-                .AddRandomPatientAsync(cancellationToken);
+                .(cancellationToken);
         }
     }
 }

@@ -11,11 +11,11 @@ using Common.Services;
 
 namespace Common.Services.Implementation
 {
-    internal class PatientDataAccess : IPatientDataAccess
+    internal class PatientService : IPatientService
     {
         private readonly IYourHelthDataAccess _context;
 
-        public PatientDataAccess(IYourHelthDataAccess context)
+        public PatientService(IYourHelthDataAccess context)
         {
             _context = context;
         }

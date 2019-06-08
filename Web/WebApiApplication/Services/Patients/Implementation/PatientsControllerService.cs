@@ -11,11 +11,11 @@ namespace WebApiApplication.Services.Patients.Implementation
 {
     internal class PatientsControllerService : IPatientsControllerService
     {
-        private readonly IPatientDataAccess _userDataAccess;
+        private readonly IPatientService _patientService;
         
-        public PatientsControllerService(IPatientDataAccess userDataAccess)
+        public PatientsControllerService(IPatientService patientService)
         {
-            _userDataAccess = userDataAccess;
+            _patientService = patientService;
         }
 
         public async Task AddRandomPatientAsync(CancellationToken cancellationToken)
@@ -26,12 +26,12 @@ namespace WebApiApplication.Services.Patients.Implementation
             {
                 return new string(Enumerable.Range(0, rand.Next(5) + 3).Select(x => chars[rand.Next(chars.Length - 1)]).ToArray());
             };
-            await _userDataAccess.AddPatientAsync(new Patient() { FirstName = generateName(), LastName = generateName(), PersonalId = Guid.NewGuid().ToString() }, cancellationToken);
+            await _patientService.AddPatientAsync(new Patient() { FirstName = generateName(), LastName = generateName(), PersonalId = Guid.NewGuid().ToString() }, cancellationToken);
         }
 
         public async Task<GetPatientResponse> GetPatientAsync(Guid guid, CancellationToken cancellationToken)
         {
-            var patient = await _userDataAccess.GetPatientByGuidAsync(guid, cancellationToken);
+            var patient = await _patientService.GetPatientByGuidAsync(guid, cancellationToken);
             if (patient == null)
                 return new GetPatientResponse
                 {
@@ -54,7 +54,7 @@ namespace WebApiApplication.Services.Patients.Implementation
 
         public async Task<SearchPatientsResponse> SearchPatientsAsync(SearchPatientsRequest request, CancellationToken cancellationToken)
         {
-            var patients = await _userDataAccess.FindPatientsAsync(request.FirstName, request.LastName, request.PersonalId, cancellationToken);
+            var patients = await _patientService.FindPatientsAsync(request.FirstName, request.LastName, request.PersonalId, cancellationToken);
 
             return new SearchPatientsResponse
             {
