@@ -30,12 +30,27 @@ namespace Common.Database.DataAccess.Implementation
             return _context.SaveChangesAsync(cancellationToken);
         }
 
-        public Task<List<Patient>> FindPatientsByPersonalIdAsync(string personalId)
+        public async Task AddOrUpdatePatientAsync(Patient patient, CancellationToken cancellationToken)
         {
-            return FindPatientsAsync(name: null, surname: null, personalId: personalId);
+            var oldPatient = await GetPatientByGuidAsync(patient.Guid, cancellationToken);
+            if(oldPatient == null)
+            {
+                await AddPatientAsync(patient, cancellationToken);
+            }
+            else
+            {
+                _context.Patients.Remove(oldPatient);
+                _context.Patients.Add(patient);
+                await _context.SaveChangesAsync(cancellationToken);
+            }
         }
 
-        public Task<List<Patient>> FindPatientsAsync(string name, string surname, string personalId)
+        public Task<List<Patient>> FindPatientsByPersonalIdAsync(string personalId, CancellationToken cancellationToken)
+        {
+            return FindPatientsAsync(name: null, surname: null, personalId: personalId, cancellationToken);
+        }
+
+        public Task<List<Patient>> FindPatientsAsync(string name, string surname, string personalId, CancellationToken cancellationToken)
         {
             var patients = _context.Patients.AsQueryable();
             if(name != null)
@@ -51,7 +66,7 @@ namespace Common.Database.DataAccess.Implementation
                 patients = patients.Where(p => p.PersonalId == personalId);
             }
 
-            return patients.ToListAsync();
+            return patients.ToListAsync(cancellationToken);
         }
 
         void IDisposable.Dispose()
