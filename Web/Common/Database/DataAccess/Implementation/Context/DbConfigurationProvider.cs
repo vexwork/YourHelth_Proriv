@@ -9,11 +9,11 @@ namespace Common.Database.DataAccess.Implementation.Context
     {
         public DbConfigurationProvider()
         {
-//            SetDefaultConnectionFactory(new SqlConnectionFactory());
-//            SetProviderServices(SqlProviderServices.ProviderInvariantName, SqlProviderServices.Instance);
-//
-//            var path = Path.GetDirectoryName(GetType().Assembly.Location);
-//            SetModelStore(new DefaultDbModelStore(path));
+            SetDefaultConnectionFactory(new SqlConnectionFactory());
+            SetProviderServices(SqlProviderServices.ProviderInvariantName, SqlProviderServices.Instance);
+
+            var path = Path.GetDirectoryName(GetType().Assembly.Location);
+            SetModelStore(new DefaultDbModelStore(path));
         }
     }
 }
