@@ -6,7 +6,7 @@ namespace WebApiApplication.Services.Patients
 {
     public interface IPatientsControllerService
     {
-        Task<SearchPatientsResponse> SearchPatientsAsync(SearchPatientsRequest request,
-            CancellationToken cancellationToken);
+        Task<SearchPatientsResponse> SearchPatientsAsync(SearchPatientsRequest request, CancellationToken cancellationToken);
+        Task AddRandomPatientAsync(CancellationToken cancellationToken);
     }
 }

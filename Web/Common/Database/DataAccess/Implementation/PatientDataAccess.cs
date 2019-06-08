@@ -56,12 +56,12 @@ namespace Common.Database.DataAccess.Implementation
             var patients = _context.Patients.AsQueryable();
             if (name != null)
             {
-                patients = patients.Where(p => p.Name == name);
+                patients = patients.Where(p => p.FirstName == name);
             }
 
             if (surname != null)
             {
-                patients = patients.Where(p => p.Surname == surname);
+                patients = patients.Where(p => p.LastName == surname);
             }
 
             if (personalId != null)
