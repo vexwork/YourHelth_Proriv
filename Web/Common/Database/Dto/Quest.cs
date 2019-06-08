@@ -17,9 +17,12 @@ namespace Common.Database.Dto
         public Conquest Conquest { get; set; }
 
         [Required]
-        public DateTime Time { get; set; }
-        
+        public DateTime BeginTime { get; set; }
+
         [Required]
-        public Prescription Prescription { get; set; }
+        public DateTime EndTime { get; set; }
+
+        [Required]
+        public List<Prescription> Prescriptions { get; set; }
     }
 }
