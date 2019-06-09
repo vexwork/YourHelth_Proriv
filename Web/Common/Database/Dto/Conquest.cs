@@ -25,5 +25,8 @@ namespace Common.Database.Dto
         public List<Prescription> Prescriptions { get; set; }
 
         public List<Quest> Quests { get; set; }
+        
+        
+        public int? CompleteRate { get; set; }
     }
 }

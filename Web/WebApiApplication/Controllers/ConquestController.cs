@@ -19,6 +19,28 @@ namespace WebApiApplication.Controllers
             _conquestControllerService = conquestControllerService;
         }
 
+        /// <summary>
+        /// Завершает квест проставляя статус выполнено/не выполнено
+        /// </summary>
+        [HttpPost]
+        [Route("v1/complete-quest/")]
+        public Task CompleteQuestAsync(CompleteQuestRequest request, CancellationToken cancellationToken)
+        {
+            return _conquestControllerService
+                .CompleteQuestAsync(request, cancellationToken);
+        }
+
+        /// <summary>
+        /// Завершает предписание врача, проставляя прогресс выполнения предписаний
+        /// </summary>
+        [HttpPost]
+        [Route("v1/complete-conquest/")]
+        public Task CompleteConquestAsync(CompleteConquestRequest request, CancellationToken cancellationToken)
+        {
+            return _conquestControllerService
+                .CompleteConquestAsync(request, cancellationToken);
+        }
+
 
         /// <summary>
         /// Запрос на квесты пациента
