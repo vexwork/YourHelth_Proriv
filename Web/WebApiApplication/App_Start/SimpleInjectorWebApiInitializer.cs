@@ -10,6 +10,8 @@ using WebApiApplication.Services.Patients.Implementation;
 using WebApiApplication.Services.Conquest;
 using WebApiApplication.Services.Conquest.Implementation;
 using WebApiApplication.Handlers;
+using WebApiApplication.Services.Accounts;
+using WebApiApplication.Services.Accounts.Implementation;
 
 [assembly: WebActivator.PostApplicationStartMethod(typeof(WebApiApplication.App_Start.SimpleInjectorWebApiInitializer), "Initialize")]
 namespace WebApiApplication.App_Start
@@ -46,6 +48,7 @@ namespace WebApiApplication.App_Start
             container.Register<IPatientsControllerService, PatientsControllerService>(Lifestyle.Singleton);
             container.Register<IConquestControllerService, ConquestControllerService>(Lifestyle.Singleton);
             container.Register<LogRequestAndResponseHandler, LogRequestAndResponseHandler>(Lifestyle.Singleton);
+            container.Register<IAccountsControllerService, AccountsControllerService>(Lifestyle.Singleton);
         }
     }
 }

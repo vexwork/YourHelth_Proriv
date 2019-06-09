@@ -32,6 +32,10 @@ namespace Common.Database.Dto
         /// </summary>
         [Required]
         public double Rate { get; set; }
+        
+        [Required]
+        public DateTime BirthDate { get; set; }
+        
 
     }
 }

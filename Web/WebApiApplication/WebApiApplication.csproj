@@ -54,6 +54,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Handlers\LogRequestAndResponseHandler.cs" />
+    <Compile Include="Models\Accounts\RegisterPatientRequest.cs" />
+    <Compile Include="Models\Accounts\RegisterPatientResponse.cs" />
+    <Compile Include="Models\Accounts\RegisterPatientStatus.cs" />
     <Compile Include="Models\Patients\GetPatientResponse.cs" />
     <Compile Include="Models\Patients\PatientModel.cs" />
     <Compile Include="Models\Patients\SearchPatientsRequest.cs" />
@@ -61,6 +64,8 @@
     <Compile Include="Models\Prescriptions\AddConquestRequest.cs" />
     <Compile Include="Models\Prescriptions\PrescriptionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Accounts\IAccountsControllerService.cs" />
+    <Compile Include="Services\Accounts\Implementation\AccountsControllerService.cs" />
     <Compile Include="Services\Conquest\Implementation\ConquestControllerService.cs" />
     <Compile Include="Services\Conquest\IConquestControllerService.cs" />
     <Compile Include="Services\Logging\ILoggingService.cs" />
@@ -113,6 +118,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -152,7 +158,6 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{81e357da-cf7f-44e8-9145-816a1c02218b}</Project>

@@ -1,48 +1,51 @@
 using System;
 using System.Runtime.Serialization;
+using System.ComponentModel.DataAnnotations;
 
-namespace WebApiApplication.Models.Patients
+
+namespace WebApiApplication.Models.Accounts
 {
+    
     /// <summary>
-    /// Модель данных для результата поиска пациентов
+    /// Запрос данных на регистрацию пациента
     /// </summary>
     [DataContract]
-    public class PatientModel
+    public class RegisterPatientRequest
     {
         /// <summary>
-        /// Идентификатор пациента
+        /// СНИЛС
         /// </summary>
-        [DataMember(Name = "guid")]
-        public Guid Guid { get; set; }
+        [Required]
+        [DataMember(Name = "personalId")]
+        public string PersonalId { get; set; }
 
+        
         /// <summary>
-        /// Имя пациента
+        /// Имя
         /// </summary>
+        [Required]
         [DataMember(Name = "firstName")]
         public string FirstName { get; set; }
 
         /// <summary>
-        /// Фамилия пациента
+        /// Фамилия
         /// </summary>
+        [Required]
         [DataMember(Name = "lastName")]
         public string LastName { get; set; }
-
+        
         /// <summary>
         /// Отчество
         /// </summary>
+        [Required]        
         [DataMember(Name = "middleName")]
         public string MiddleName { get; set; }
 
         /// <summary>
-        /// Снилс 
-        /// </summary>
-        [DataMember(Name = "personalId")]
-        public string PersonalId { get; set; }
-
-        /// <summary>
         /// Дата рождения
         /// </summary>
+        [Required]
         [DataMember(Name = "birthDate")]
-        public DateTime BithDate { get; set; }
+        public DateTime  BirthDate { get; set; }
     }
 }

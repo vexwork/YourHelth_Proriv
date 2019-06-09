@@ -46,7 +46,8 @@ namespace WebApiApplication.Services.Patients.Implementation
                     FirstName = patient.FirstName,
                     LastName = patient.LastName,
                     PersonalId = patient.PersonalId,
-                    BithDate = DateTime.Now.AddYears(-18),
+                    BithDate = patient.BirthDate,
+                    MiddleName = patient.Patronymic,
                 }
             };
 
@@ -65,7 +66,9 @@ namespace WebApiApplication.Services.Patients.Implementation
                         Guid = p.Guid,
                         FirstName = p.FirstName,
                         LastName = p.LastName,
+                        MiddleName = p.Patronymic,
                         PersonalId = p.PersonalId,
+                        BithDate = p.BirthDate,
                     };
                 }).ToList()
             };
