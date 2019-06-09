@@ -24,22 +24,22 @@ namespace Common.Services.Implementation
 
         public Task<List<Quest>> GetWaitingQuestsAsync(Patient patient, CancellationToken cancellationToken)
         {
-            return GetQuestsAsync(patient, state: QuestState.Waiting, cancellationToken);
+            return GetQuestsAsync(patient,  QuestState.Waiting, cancellationToken);
         }
 
         public Task<List<Quest>> GetFailedQuestsAsync(Patient patient, CancellationToken cancellationToken)
         {
-            return GetQuestsAsync(patient, state: QuestState.Failed, cancellationToken);
+            return GetQuestsAsync(patient,  QuestState.Failed, cancellationToken);
         }
 
         public Task<List<Quest>> GetPassedQuestsAsync(Patient patient, CancellationToken cancellationToken)
         {
-            return GetQuestsAsync(patient, state: QuestState.Passed, cancellationToken);
+            return GetQuestsAsync(patient,  QuestState.Passed, cancellationToken);
         }
 
         public Task<List<Quest>> GetAllQuestsAsync(Patient patient, CancellationToken cancellationToken)
         {
-            return GetQuestsAsync(patient, state: null, cancellationToken);
+            return GetQuestsAsync(patient,  null, cancellationToken);
         }
 
         public Task<List<Quest>> GetQuestsAsync(Patient patient, QuestState? state, CancellationToken cancellationToken)
