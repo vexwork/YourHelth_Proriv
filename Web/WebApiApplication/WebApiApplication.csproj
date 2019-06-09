@@ -58,6 +58,8 @@
     <Compile Include="Models\Accounts\RegisterPatientRequest.cs" />
     <Compile Include="Models\Accounts\RegisterPatientResponse.cs" />
     <Compile Include="Models\Accounts\RegisterPatientStatus.cs" />
+    <Compile Include="Models\Conquests\ConquestsResponse.cs" />
+    <Compile Include="Models\Conquests\QuestsResponse.cs" />
     <Compile Include="Models\Patients\GetPatientResponse.cs" />
     <Compile Include="Models\Patients\PatientModel.cs" />
     <Compile Include="Models\Patients\SearchPatientsRequest.cs" />
