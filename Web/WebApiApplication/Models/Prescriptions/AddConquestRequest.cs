@@ -22,6 +22,9 @@ namespace WebApiApplication.Models.Prescriptions
         public string Name { get; set; }
 
         [DataMember]
+        public DateTime BeginTime { get; set; }
+
+        [DataMember]
         public List<PrescriptionModel> Prescriptions { get; set; }
     }
 }

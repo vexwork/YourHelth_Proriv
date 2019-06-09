@@ -12,8 +12,8 @@ namespace Common.Database.DataAccess.Implementation
             SetDefaultConnectionFactory(new SqlConnectionFactory());
             SetProviderServices(SqlProviderServices.ProviderInvariantName, SqlProviderServices.Instance);
 
-            var path = Path.GetDirectoryName(GetType().Assembly.Location);
-            SetModelStore(new DefaultDbModelStore(path));
+            //var path = Path.GetDirectoryName(GetType().Assembly.Location);
+            //SetModelStore(new DefaultDbModelStore(path));
         }
     }
 }

@@ -19,6 +19,9 @@ namespace Common.Database.Dto
         [Required]
         public string Name { get; set; }
 
+        [Required]
+        public DateTime BeginTime { get; set; }
+
         public List<Prescription> Prescriptions { get; set; }
 
         public List<Quest> Quests { get; set; }

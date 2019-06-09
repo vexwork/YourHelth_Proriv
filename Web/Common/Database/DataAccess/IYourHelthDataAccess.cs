@@ -14,5 +14,6 @@ namespace Common.Database.DataAccess
         DbSet<ActionTime> ActionTime { get; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        int SaveChanges();
     }
 }

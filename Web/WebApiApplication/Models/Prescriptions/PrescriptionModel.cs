@@ -20,11 +20,8 @@ namespace WebApiApplication.Models.Prescriptions
         public PrescriptionTypes Type { get; set; }
 
         [DataMember]
-        public TimeSpan Duration { get; set; }
-
-        [DataMember]
-        public int Period { get; set; }
-
+        public int DurationInDays { get; set; }
+        
         [DataMember]
         public List<TimeSpan> ActionTimes { get; set; }
     }
