@@ -55,6 +55,7 @@ namespace WebApiApplication.Services.Conquest.Implementation
                     return new ConquestModel()
                     {
                         Name = x.Name,
+                        Id = x.Guid,
                         Quests = WrapQuests(x.Quests),
                     };
                 }).ToList()

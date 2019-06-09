@@ -23,17 +23,17 @@ namespace WebApiApplication.Models.Prescriptions
         public int DurationInDays { get; set; }
 
         [IgnoreDataMember]
-        public List<TimeSpan> ActionTimes => new List<TimeSpan>() { Time1, Time2, Time3 };
+        public List<TimeSpan> ActionTimes => new []{ Time1, Time2, Time3 }.Where(x => x.HasValue).Select(x => x.Value).ToList();
         
         #region 
         [DataMember(Name = "time1")]
-        public TimeSpan Time1 { get; set; }
+        public TimeSpan? Time1 { get; set; }
 
         [DataMember(Name = "time2")]
-        public TimeSpan Time2 { get; set; }
+        public TimeSpan? Time2 { get; set; }
 
         [DataMember(Name = "time3")]
-        public TimeSpan Time3 { get; set; }
+        public TimeSpan? Time3 { get; set; }
         #endregion 
     }
 }
