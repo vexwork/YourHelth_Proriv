@@ -21,7 +21,7 @@ namespace Common.Database.Dto
         /// Время лечения
         /// </summary>
         [Required]
-        public TimeSpan Duration { get; set; }
+        public int DurationInDays { get; set; }
 
         public List<ActionTime> ActionTimes { get; set; }
     }

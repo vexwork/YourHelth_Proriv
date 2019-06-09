@@ -12,5 +12,7 @@ namespace Common.Services
     public interface IConquestService
     {
         Task AddConquestAsync(Conquest conquest, CancellationToken cancellationToken);
+        Conquest BuildConquest(Patient patient, DateTime beginTime, string name, List<Prescription> prescriptions);
     }
 }
+    

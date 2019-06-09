@@ -24,22 +24,17 @@ namespace WebApiApplication.Services.Conquest.Implementation
         public async Task AddConquestAsync(AddConquestRequest request, CancellationToken cancellationToken)
         {
             var patient = await _patientService.GetPatientByGuidAsync(request.PatientId, cancellationToken);
-            var conqest = new Common.Database.Dto.Conquest()
+            var conquest = _conquestService.BuildConquest(patient, request.BeginTime, request.Name, request.Prescriptions.Select(x => new Prescription()
             {
-                Name = request.Name,
-                Patient = patient,
-                Prescriptions = request.Prescriptions.Select(x => new Prescription()
+                Name = x.Name,
+                Type = x.Type,
+                DurationInDays = x.DurationInDays,
+                ActionTimes = x.ActionTimes.Select(at => new ActionTime()
                 {
-                    Name = x.Name,
-                    Type = x.Type,
-                    Duration = x.Duration,
-                    ActionTimes = x.ActionTimes.Select(at => new ActionTime()
-                    {
-                        Time = at
-                    }).ToList(),
+                    Time = at
                 }).ToList(),
-            };
-            await _conquestService.AddConquestAsync(conqest, cancellationToken);
+            }).ToList());
+            await _conquestService.AddConquestAsync(conquest, cancellationToken);
         }
     }
 }

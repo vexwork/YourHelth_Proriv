@@ -2,6 +2,7 @@
 {
     public enum QuestState
     {
+        Waiting,
         Passed,
         Failed
     }
