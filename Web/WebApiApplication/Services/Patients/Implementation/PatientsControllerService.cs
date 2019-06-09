@@ -50,7 +50,6 @@ namespace WebApiApplication.Services.Patients.Implementation
                     MiddleName = patient.Patronymic,
                 }
             };
-
         }
 
         public async Task<SearchPatientsResponse> SearchPatientsAsync(SearchPatientsRequest request, CancellationToken cancellationToken)
