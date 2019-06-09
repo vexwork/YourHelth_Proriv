@@ -24,22 +24,22 @@ namespace Common.Services.Implementation
 
         public Task<List<Quest>> GetWaitingQuestsAsync(Patient patient, CancellationToken cancellationToken)
         {
-            return GetQuestsAsync(patient, state: QuestState.Waiting, cancellationToken);
+            return GetQuestsAsync(patient,  QuestState.Waiting, cancellationToken);
         }
 
         public Task<List<Quest>> GetFailedQuestsAsync(Patient patient, CancellationToken cancellationToken)
         {
-            return GetQuestsAsync(patient, state: QuestState.Failed, cancellationToken);
+            return GetQuestsAsync(patient,  QuestState.Failed, cancellationToken);
         }
 
         public Task<List<Quest>> GetPassedQuestsAsync(Patient patient, CancellationToken cancellationToken)
         {
-            return GetQuestsAsync(patient, state: QuestState.Passed, cancellationToken);
+            return GetQuestsAsync(patient,  QuestState.Passed, cancellationToken);
         }
 
         public Task<List<Quest>> GetAllQuestsAsync(Patient patient, CancellationToken cancellationToken)
         {
-            return GetQuestsAsync(patient, state: null, cancellationToken);
+            return GetQuestsAsync(patient,  null, cancellationToken);
         }
 
         public Task<List<Quest>> GetQuestsAsync(Patient patient, QuestState? state, CancellationToken cancellationToken)
@@ -74,7 +74,8 @@ namespace Common.Services.Implementation
             });
         }
 
-        public Conquest BuildConquest(Patient patient, DateTime beginTime, string name, List<Prescription> prescriptions)
+        public Conquest BuildConquest(Patient patient, DateTime beginTime, string name,
+            List<Prescription> prescriptions)
         {
             var quests = BuildQuests(beginTime, prescriptions);
             return new Conquest()
@@ -87,22 +88,38 @@ namespace Common.Services.Implementation
             };
         }
 
+        public async Task CompleteConquestAsync(Guid guid, int? completeRate, CancellationToken cancellationToken)
+        {
+            var conquest = await _context.Conquest
+                .FirstOrDefaultAsync(x => x.Guid == guid, cancellationToken);
+
+            if (conquest == null)
+                throw new Exception("Конквест не найден");
+
+            conquest.CompleteRate = completeRate;
+            await _context
+                .SaveChangesAsync(cancellationToken);
+        }
+
         private List<Quest> BuildQuests(DateTime beginTime, List<Prescription> prescriptions)
         {
-            var quests = prescriptions.SelectMany(p => {
+            var quests = prescriptions.SelectMany(p =>
+            {
                 var beginDay = beginTime.Date;
                 var endDay = beginDay.AddDays(p.DurationInDays);
 
                 var times = new List<DateTime>();
-                for(var day = beginDay; day < endDay; day = day.AddDays(1))
+                for (var day = beginDay; day < endDay; day = day.AddDays(1))
                 {
-                    foreach(var timeOfDay in p.ActionTimes.Select(x => x.Time))
+                    foreach (var timeOfDay in p.ActionTimes.Select(x => x.Time))
                     {
                         times.Add(day.Add(timeOfDay));
                     }
                 }
+
                 times.Sort();
-                return times.Select(tm => {
+                return times.Select(tm =>
+                {
                     return new Quest()
                     {
                         Prescription = p,
@@ -113,6 +130,5 @@ namespace Common.Services.Implementation
             });
             return quests.OrderBy(x => x.Time).ToList();
         }
-
     }
 }

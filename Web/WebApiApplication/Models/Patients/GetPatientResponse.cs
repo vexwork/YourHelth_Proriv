@@ -11,7 +11,7 @@ namespace WebApiApplication.Models.Patients
         /// <summary>
         /// Данные пациента
         /// </summary>
-        [DataMember]
+        [DataMember(Name = "patient")]
         public PatientModel Patient { get; set; }
     }
 }
