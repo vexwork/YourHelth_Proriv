@@ -42,14 +42,14 @@ namespace Common.Services.Implementation
             return GetQuestsAsync(patient, state: null, cancellationToken);
         }
 
-        private Task<List<Quest>> GetQuestsAsync(Patient patient, QuestState? state, CancellationToken cancellationToken)
+        public Task<List<Quest>> GetQuestsAsync(Patient patient, QuestState? state, CancellationToken cancellationToken)
         {
-            var quests = _context.Quest.Where(x => x.Conquest.Patient == patient).AsQueryable();
+            var quests = _context.Quest.Where(x => x.Conquest.Patient.Guid == patient.Guid).AsQueryable();
             if(state != null)
             {
-                quests = quests.Where(x => x.State == state.Value);
+                quests = quests.Where(x => x.State == state);
             }
-            return quests.OrderBy(x => x.Time).ToListAsync();
+            return quests.OrderBy(x => x.Time).ToListAsync(cancellationToken);
         }
         
 

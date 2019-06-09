@@ -18,5 +18,8 @@ namespace WebApiApplication.Models.Conquests
 
         [DataMember(Name = "time")]
         public DateTime Time { get; set; }
+
+        [DataMember(Name = "prescription_title")]
+        public string PrescriptionTitle { get; set; }
     }
 }

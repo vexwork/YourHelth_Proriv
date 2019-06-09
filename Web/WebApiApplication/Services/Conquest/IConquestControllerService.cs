@@ -1,5 +1,7 @@
-﻿using System.Threading;
+﻿using Common.Data;
+using System.Threading;
 using System.Threading.Tasks;
+using WebApiApplication.Models.Conquests;
 using WebApiApplication.Models.Prescriptions;
 
 namespace WebApiApplication.Services.Conquest
@@ -7,5 +9,6 @@ namespace WebApiApplication.Services.Conquest
     public interface IConquestControllerService
     {
         Task AddConquestAsync(AddConquestRequest request, CancellationToken cancellationToken);
+        Task<QuestsResponse> GetQuestsAsync(QuestsRequest request, CancellationToken cancellationToken);
     }
 }

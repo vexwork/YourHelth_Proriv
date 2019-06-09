@@ -1,4 +1,7 @@
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web.Http;
+using WebApiApplication.Models.Conquests;
 using WebApiApplication.Services.Conquest;
 
 namespace WebApiApplication.Controllers
@@ -13,6 +16,18 @@ namespace WebApiApplication.Controllers
         public ConquestController(IConquestControllerService conquestControllerService)
         {
             _conquestControllerService = conquestControllerService;
-        }   
+        }
+
+
+        /// <summary>
+        /// Запрос на квесты пациента
+        /// </summary>
+        [HttpPost]
+        [Route("v1/get-quests/")]
+        public Task<QuestsResponse> RegisterPatientAsync(QuestsRequest request,
+            CancellationToken cancellationToken)
+        {
+            return _conquestControllerService.GetQuestsAsync(request, cancellationToken);
+        }
     }
 }

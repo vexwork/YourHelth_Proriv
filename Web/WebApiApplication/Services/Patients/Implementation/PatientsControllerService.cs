@@ -26,7 +26,7 @@ namespace WebApiApplication.Services.Patients.Implementation
             {
                 return new string(Enumerable.Range(0, rand.Next(5) + 3).Select(x => chars[rand.Next(chars.Length - 1)]).ToArray());
             };
-            await _patientService.AddPatientAsync(new Patient() { FirstName = generateName(), LastName = generateName(), PersonalId = Guid.NewGuid().ToString() }, cancellationToken);
+            await _patientService.AddPatientAsync(new Patient() { FirstName = generateName(), LastName = generateName(), PersonalId = Guid.NewGuid().ToString(), BirthDate = DateTime.Now }, cancellationToken);
         }
 
         public async Task<GetPatientResponse> GetPatientAsync(Guid guid, CancellationToken cancellationToken)
