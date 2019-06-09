@@ -13,6 +13,8 @@ namespace Common.Services
     {
         Task AddConquestAsync(Conquest conquest, CancellationToken cancellationToken);
         Conquest BuildConquest(Patient patient, DateTime beginTime, string name, List<Prescription> prescriptions);
+
+        Task CompleteConquestAsync(Guid guid, int? completeRate, CancellationToken cancellationToken);
     }
 }
     

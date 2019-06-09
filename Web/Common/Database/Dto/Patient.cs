@@ -25,7 +25,7 @@ namespace Common.Database.Dto
         [Required(AllowEmptyStrings = true)]
         public string Patronymic { get; set; } = string.Empty;
 
-        public List<Conquest> Conquests { get; set; }
+        public List<Conquest> Conquests { get; set; } = new List<Conquest>();
 
         /// <summary>
         /// Общий рейтинг в системе

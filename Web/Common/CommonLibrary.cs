@@ -13,6 +13,7 @@ namespace Common
             container.Register<IPatientService, PatientService>(Lifestyle.Singleton);
             container.Register<IYourHelthDataAccess, YourHelthContext>(Lifestyle.Singleton);
             container.Register<IConquestService, ConquestService>(Lifestyle.Singleton);
+            container.Register<IQuestsService, QuestsService>(Lifestyle.Singleton);
         }
     }
 }

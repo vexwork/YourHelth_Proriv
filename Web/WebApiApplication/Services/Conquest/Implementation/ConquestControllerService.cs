@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using WebApiApplication.Models.Prescriptions;
 using Common.Database.Dto;
+using WebApiApplication.Models.Conquests;
 
 namespace WebApiApplication.Services.Conquest.Implementation
 {
@@ -14,27 +15,44 @@ namespace WebApiApplication.Services.Conquest.Implementation
     {
         private readonly IConquestService _conquestService;
         private readonly IPatientService _patientService;
+        private readonly IQuestsService _questsService;
 
-        public ConquestControllerService(IConquestService conquestService, IPatientService patientService)
+        public ConquestControllerService(IConquestService conquestService,
+            IPatientService patientService,
+            IQuestsService questsService)
         {
             _conquestService = conquestService;
             _patientService = patientService;
+            _questsService = questsService;
         }
 
         public async Task AddConquestAsync(AddConquestRequest request, CancellationToken cancellationToken)
         {
             var patient = await _patientService.GetPatientByGuidAsync(request.PatientId, cancellationToken);
-            var conquest = _conquestService.BuildConquest(patient, request.BeginTime, request.Name, request.Prescriptions.Select(x => new Prescription()
-            {
-                Name = x.Name,
-                Type = x.Type,
-                DurationInDays = x.DurationInDays,
-                ActionTimes = x.ActionTimes.Select(at => new ActionTime()
+            var conquest = _conquestService.BuildConquest(patient, request.BeginTime, request.Name, request
+                .Prescriptions.Select(x => new Prescription()
                 {
-                    Time = at
-                }).ToList(),
-            }).ToList());
+                    Name = x.Name,
+                    Type = x.Type,
+                    DurationInDays = x.DurationInDays,
+                    ActionTimes = x.ActionTimes.Select(at => new ActionTime()
+                    {
+                        Time = at
+                    }).ToList(),
+                }).ToList());
             await _conquestService.AddConquestAsync(conquest, cancellationToken);
+        }
+
+        public Task CompleteQuestAsync(CompleteQuestRequest request, CancellationToken cancellationToken)
+        {
+            return _questsService
+                .CompleteQuestAsync(request.Guid, request.State, cancellationToken);
+        }
+
+        public Task CompleteConquestAsync(CompleteConquestRequest request, CancellationToken cancellationToken)
+        {
+            return _conquestService
+                .CompleteConquestAsync(request.Guid, request.CompleteRate, cancellationToken);
         }
     }
 }

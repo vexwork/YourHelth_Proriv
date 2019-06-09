@@ -2,6 +2,7 @@
 using Common.Database.Dto;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -36,7 +37,8 @@ namespace Common.Services.Implementation
             });
         }
 
-        public Conquest BuildConquest(Patient patient, DateTime beginTime, string name, List<Prescription> prescriptions)
+        public Conquest BuildConquest(Patient patient, DateTime beginTime, string name,
+            List<Prescription> prescriptions)
         {
             var quests = BuildQuests(beginTime, prescriptions);
             return new Conquest()
@@ -49,22 +51,38 @@ namespace Common.Services.Implementation
             };
         }
 
+        public async Task CompleteConquestAsync(Guid guid, int? completeRate, CancellationToken cancellationToken)
+        {
+            var conquest = await _context.Conquest
+                .FirstOrDefaultAsync(x => x.Guid == guid, cancellationToken);
+
+            if (conquest == null)
+                throw new Exception("Конквест не найден");
+
+            conquest.CompleteRate = completeRate;
+            await _context
+                .SaveChangesAsync(cancellationToken);
+        }
+
         private List<Quest> BuildQuests(DateTime beginTime, List<Prescription> prescriptions)
         {
-            var quests = prescriptions.SelectMany(p => {
+            var quests = prescriptions.SelectMany(p =>
+            {
                 var beginDay = beginTime.Date;
                 var endDay = beginDay.AddDays(p.DurationInDays);
 
                 var times = new List<DateTime>();
-                for(var day = beginDay; day < endDay; day = day.AddDays(1))
+                for (var day = beginDay; day < endDay; day = day.AddDays(1))
                 {
-                    foreach(var timeOfDay in p.ActionTimes.Select(x => x.Time))
+                    foreach (var timeOfDay in p.ActionTimes.Select(x => x.Time))
                     {
                         times.Add(day.Add(timeOfDay));
                     }
                 }
+
                 times.Sort();
-                return times.Select(tm => {
+                return times.Select(tm =>
+                {
                     return new Quest()
                     {
                         Prescription = p,
@@ -75,6 +93,5 @@ namespace Common.Services.Implementation
             });
             return quests.OrderBy(x => x.Time).ToList();
         }
-
     }
 }
