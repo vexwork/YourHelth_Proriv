@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="robots" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Регистрация</title>
+    <link href="style/normalize.css" rel="shortcut icon">
+    <link href="style/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700&display=swap&subset=cyrillic" rel="stylesheet">
+</head>
+<body>
+<form id="registerForm" class="form form-registerform" onsubmit="return false;">
+    <header class="header header-registerform">
+
+        <div class="form__title">Регистрация</div>
+        <div class="form__group">
+            <input type="text" name="fullanme" placeholder="Фамилия Имя Отчество"/>
+        </div>
+        <div class="form__group">
+            <input type="text" name="dateBirth" placeholder="Дата рождения"/>
+        </div>
+        <div class="form__group">
+            <input type="text" name="address" placeholder="Адрес проживания"/>
+        </div>
+        <div class="form__group">
+            <input type="text" name="snils" placeholder="СНИЛС"/>
+        </div>
+        <!--<div class="form__group">-->
+            <!--<input type="text" name="email" placeholder="E-mail"/>-->
+        <!--</div>-->
+        <!--<div class="form__group">-->
+            <!--<input type="text" name="" placeholder="Пароль"/>-->
+        <!--</div>-->
+    </header>
+    <div class="form__group form__group-submit">
+        <button class="btn btn-blue" id="registerAction">Зарегестрироваться</button>
+    </div>
+</form>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
+</body>
+</html>

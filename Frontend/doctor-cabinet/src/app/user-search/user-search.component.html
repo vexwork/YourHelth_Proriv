@@ -1,0 +1,44 @@
+<div class="pt-5 pb-2">
+  <h1>Работа с клиентами</h1>
+</div>
+
+<form class="row pb-4">
+  <div class="col-12 col-lg-10 col-xl-11">
+    <div class="row">
+      <div class="form-group col-12 col-md-4">
+        <label class="d-block">Фамилия</label>
+        <input class="form-control" type="text" name="lastName" [(ngModel)]="lastName" value="" placeholder="Фамилия"/>
+      </div>
+      <div class="form-group col-12 col-md-4 ">
+        <label class="d-block">Имя</label>
+        <input class="form-control" type="text" name="firstName" [(ngModel)]="firstName" value="" placeholder="Имя"/>
+      </div>
+      <div class="form-group col-12 col-md-4">
+        <label class="d-block">СНИЛС</label>
+        <input class="form-control" type="text" name="personalId" [(ngModel)]="personalId" value="" placeholder="123-124124"/>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-lg-2 col-xl-1">
+    <div class="row justify-content-end">
+      <div class="form-group col-12">
+        <label class="d-block">&nbsp;</label>
+        <button class="btn btn-success" (click)="searchAction()">Искать</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="users.length" class="pt-3 pb-5">
+  <h4 class="pb-3">Найдено совпадений: {{users.length}}</h4>
+  <table class="table clients">
+    <tr *ngFor="let user of users" class="clients__one">
+      <td>{{user.lastName}}</td>
+      <td>{{user.firstName}}</td>
+      <td>{{user.personalId}}</td>
+      <td width="90">
+        <button class="btn btn-primary" [routerLink]="['/user', user.guid]">Открыть</button>
+      </td>
+    </tr>
+  </table>
+</div>

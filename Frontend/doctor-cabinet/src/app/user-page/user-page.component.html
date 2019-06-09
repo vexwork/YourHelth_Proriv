@@ -1,0 +1,85 @@
+<div class="pt-5 pb-5">
+  <h1>Пациент: {{userid}}</h1>
+  <div class="card mt-4 mb-3">
+    <h5 class="card-header">История болезни</h5>
+    <div class="card-body">
+      <h5 class="card-title">Хранический кашель и ОРВИ</h5>
+      <p class="card-text">Пациент жалуется на насморк, просыпается с заложенным носом, температура</p>
+      <!--<a routerLink="user/history" disabled class="btn btn-secondary">Читать подробную историю</a>-->
+    </div>
+  </div>
+
+  <div class="pt-3" *ngIf="therapyFormShow===false">
+    <button class="btn btn-primary"  (click)="toggleTherapyForm();"><i class="fa fa-edit"></i> Назаначить лечениe</button>
+    <!--<button class="btn btn-primary ml-3" (click)="toggleReceptionForm();"><i class="fa fa-stethoscope"></i> Записать на прием</button>-->
+  </div>
+
+  <form [formGroup]="therapyForm" (ngSubmit)="therapyFormAction()" *ngIf="therapyFormShow===true" class="form pt-3 pb-5">
+
+    <div class="border-bottom pb-2 pt-2" formArrayName="prescriptions" *ngFor="let prescriptions of therapyForm.controls.prescriptions.controls; let i = index;">
+      <div class="row" [formGroupName]="i">
+        <div class="form-group col-12 col-sm-6 col-md-3">
+          <label>Наименование</label>
+          <input required class="form-control" type="text" [class.has-error]="submittedTherapy && therapyForm.controls.prescriptions.controls[i].controls.name.errors?.required" formControlName="name" placeholder="Название"/>
+          <div [class.d-block]="submittedTherapy && therapyForm.controls.prescriptions.controls[i].controls.name.errors?.required" class="invalid-feedback">
+            Поле обязательно для заполнения
+          </div>
+        </div>
+        <div class="form-group col-12 col-sm-6 col-md-3">
+          <label>Бланк назначения</label>
+          <select formControlName="type" class="form-control">
+            <option value="1">Таблетки</option>
+            <option value="2">Уколы</option>
+            <option value="3">Массаж</option>
+            <option value="4">Перевязка</option>
+          </select>
+        </div>
+        <div class="form-group col-12 col-sm-6 col-md-3">
+          <label>Время лечения</label>
+          <input required class="form-control" type="text" [class.has-error]="submittedTherapy && therapyForm.controls.prescriptions.controls[i].controls.duration.errors?.required" formControlName="duration" placeholder="10 дней"/>
+          <div [class.d-block]="submittedTherapy && therapyForm.controls.prescriptions.controls[i].controls.duration.errors?.required" class="invalid-feedback">
+            Поле обязательно для заполнения
+          </div>
+        </div>
+        <div class="form-group col-12 col-sm-6 col-md-3">
+          <label>Периодичность</label>
+          <select formControlName="period" (change)="addTimes(i)" class="form-control" [class.has-error]="submittedTherapy && therapyForm.controls.prescriptions.controls[i].controls.period.errors?.required">
+            <option value="">Укажите значение</option>
+            <option value="1">1 раз в день</option>
+            <option value="2">2 раза в день</option>
+            <option value="3">3 раза в день</option>
+          </select>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-6">
+          <div class="row">
+            <div *ngIf="therapyForm.controls.prescriptions.controls[i].controls.period.value>=1" class="form-group col-4">
+              <label>1 прием</label>
+              <input type="" required class="form-control" formControlName="time" placeholder="10:00"/>
+            </div>
+            <div *ngIf="therapyForm.controls.prescriptions.controls[i].controls.period.value>=2" class="form-group col-4">
+              <label>1 прием</label>
+              <input type="" required class="form-control" formControlName="time" placeholder="14:00"/>
+            </div>
+            <div *ngIf="therapyForm.controls.prescriptions.controls[i].controls.period.value>=3" class="form-group col-4">
+              <label>1 прием</label>
+              <input type="" required class="form-control" formControlName="time" placeholder="18:00"/>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="row pt-3">
+      <div class="form-group col-12 col-sm-6 col-md-4">
+        <div class="btn btn-primary" (click)="addItem()"> <div class="fa fa-plus"></div></div>
+        <button class="btn btn-success ml-3" (click)="therapyFormAction()">Назначить</button>
+        <button class="btn btn-light ml-3" (click)="therapyFormCancel()">Отмена</button>
+      </div>
+    </div>
+
+  </form>
+
+</div>

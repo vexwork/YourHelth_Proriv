@@ -1,0 +1,30 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<nav class="nav bg-white border-bottom shadow-sm p-3 px-md-4">
+  <div class="container">
+    <div class="row d-flex flex-column flex-md-row align-items-center justify-content-between">
+      <div class="logo">
+        <a class="p-1 text-dark nav__logo" routerLink=""><span>Your</span>Health</a>
+      </div>
+
+      <div class="nav__login">
+        <a class="btn btn-outline-success ml-2" routerLink="/login">Вход</a>
+        <a class="btn btn-outline-primary ml-2" routerLink="/register">Регистрация</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container minheight">
+  <router-outlet>
+
+  </router-outlet>
+</div>
+
+<footer class="footer bg-light border-top p-3 px-md-4">
+  <div class="container">
+    <div class="row">
+      <div class="footer__copyrights"><a class="text-dark" routerLink="/">Слуба поддержки</a></div>
+
+    </div>
+  </div>
+</footer>

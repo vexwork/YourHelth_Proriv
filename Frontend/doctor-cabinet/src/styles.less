@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "./assets/bootstrap-reboot.min.css";
+@import "./assets/bootstrap-grid.min.css";
+@import "./assets/bootstrap.min.css";
+
+@opensans: 'Open Sans', sans-serif;
+@montserrat: 'Montserrat', sans-serif;
+
+body{
+  font-family: @opensans;
+}
+
+/*
+
+
+
+
+Навигация
+
+
+
+
+
+*/
+
+.nav{
+  &__logo{
+    font-family: @montserrat;
+    font-weight: 900;
+    font-size: 20px;
+    span{
+      color: #007bff;
+    }
+  }
+}
+
+.loginForm{
+  max-width: 500px;
+  margin: 0 auto;
+
+}
+
+.minheight{
+  display: block;
+  min-height: calc(100vh - 128px);
+}
+
+.has-error{
+  border-color: #f00;
+}
+
+.fa{
+  font-size: 120%;
+  margin-right: 7px;
+}

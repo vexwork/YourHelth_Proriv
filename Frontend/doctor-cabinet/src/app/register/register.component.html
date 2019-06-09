@@ -1,0 +1,38 @@
+
+<div class="loginForm pt-5 pb-5">
+  <form #registerForm="ngForm" >
+    <h1 class="pb-3">Регистарция врача</h1>
+    <div class="form-group">
+      <label>Email</label>
+      <input autocomplete="off" required email type="email" #email="ngModel" [class.has-error]="email.invalid && !email.pristine" [(ngModel)]="user.email"
+             name="email" id="email" class="form-control" placeholder="doctor5bolnica@gmail.com"/>
+      <div class="alert alert-danger" [hidden]="!email.errors?.required || email.pristine">
+        Поле 'email' обязательно для заполнения
+      </div>
+      <div class="alert alert-danger" [hidden]="!email.errors?.email || email.pristine">
+        Поле 'email' не корректный
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Клиника</label>
+      <input required type="text" #clinic="ngModel" [class.has-error]="clinic.invalid && !clinic.pristine"
+             [(ngModel)]="user.clinic" name="clinic" class="form-control" placeholder="Городская поликлинника №5"/>
+      <div class="alert alert-danger" [hidden]="!clinic.errors?.required || clinic.pristine">
+        Поле 'Клиника' обязательно для заполнения
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Пароль</label>
+      <input required minlength="6" #password="ngModel" [class.has-error]="password.invalid && !password.pristine" [(ngModel)]="user.password" type="password" name="password" class="form-control" placeholder="••••••••"/>
+      <div class="alert alert-danger" [hidden]="!password.errors?.required || password.pristine">
+        Поле 'Пароль' обязательно для заполнения
+      </div>
+      <div class="alert alert-danger" [hidden]="!password.errors?.minlength || password.pristine">
+        Поле 'Пароль' должно содержать минимум 6 символов
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-success" (click)="registerAction()">Войти</button>
+    </div>
+  </form>
+</div>
