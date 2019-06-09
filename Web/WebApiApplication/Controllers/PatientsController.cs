@@ -3,6 +3,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 using WebApiApplication.Models.Patients;
+using WebApiApplication.Models.Prescriptions;
+using WebApiApplication.Services.Conquest;
 using WebApiApplication.Services.Patients;
 
 
@@ -14,10 +16,12 @@ namespace WebApiApplication.Controllers
     public class PatientsController : ApiController
     {
         private readonly IPatientsControllerService _patientsControllerService;
+        private readonly IConquestControllerService _conquestControllerService;
 
-        public PatientsController(IPatientsControllerService patientsControllerService)
+        public PatientsController(IPatientsControllerService patientsControllerService, IConquestControllerService conquestControllerService)
         {
             _patientsControllerService = patientsControllerService;
+            _conquestControllerService = conquestControllerService;
         }
 
         /// <summary>
@@ -53,6 +57,13 @@ namespace WebApiApplication.Controllers
         {
             await _patientsControllerService
                 .AddRandomPatientAsync(cancellationToken);
+        }
+
+        [HttpPost]
+        [Route("v1/add-prescription/")]
+        public async Task AddPrescriptionAsync(AddConquestRequest request, CancellationToken cancellationToken)
+        {
+            await _conquestControllerService.AddConquestAsync(request, cancellationToken);
         }
     }
 }

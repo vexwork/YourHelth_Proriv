@@ -5,18 +5,19 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Common.Database.DataAccess.Implementation.Context;
+using Common.Database.DataAccess;
 using Common.Database.Dto;
+using Common.Services;
 
-namespace Common.Database.DataAccess.Implementation
+namespace Common.Services.Implementation
 {
-    internal class PatientDataAccess : IPatientDataAccess, IDisposable
+    internal class PatientService : IPatientService
     {
-        private readonly YourHelthContext _context;
+        private readonly IYourHelthDataAccess _context;
 
-        public PatientDataAccess()
+        public PatientService(IYourHelthDataAccess context)
         {
-            _context = new YourHelthContext();
+            _context = context;
         }
 
         public Task<Patient> GetPatientByGuidAsync(Guid userId, CancellationToken cancellationToken)
@@ -70,11 +71,6 @@ namespace Common.Database.DataAccess.Implementation
             }
 
             return patients.ToListAsync(cancellationToken);
-        }
-
-        void IDisposable.Dispose()
-        {
-            _context.Dispose();
         }
     }
 }

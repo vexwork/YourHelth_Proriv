@@ -7,18 +7,19 @@ using WebApiApplication.Services.Logging;
 using WebApiApplication.Services.Logging.Implementation;
 using WebApiApplication.Services.Patients;
 using WebApiApplication.Services.Patients.Implementation;
+using WebApiApplication.Services.Conquest;
+using WebApiApplication.Services.Conquest.Implementation;
 using WebApiApplication.Handlers;
 
 [assembly: WebActivator.PostApplicationStartMethod(typeof(WebApiApplication.App_Start.SimpleInjectorWebApiInitializer), "Initialize")]
 namespace WebApiApplication.App_Start
 {
+    using System.Diagnostics;
     using System.Web.Http;
     using SimpleInjector;
     using SimpleInjector.Integration.WebApi;
     using SimpleInjector.Lifestyles;
-    using WebApiApplication.Services;
-    using WebApiApplication.Services.Implementation;
-  
+
     
     public static class SimpleInjectorWebApiInitializer
     {
@@ -42,8 +43,8 @@ namespace WebApiApplication.App_Start
         {
             container.Register<ILoggingService, LoggingService>(Lifestyle.Singleton);
             CommonLibrary.RegisterDependencyInjection(container);
-            container.Register<IHomeControllerService, HomeControllerService>(Lifestyle.Singleton);
             container.Register<IPatientsControllerService, PatientsControllerService>(Lifestyle.Singleton);
+            container.Register<IConquestControllerService, ConquestControllerService>(Lifestyle.Singleton);
             container.Register<LogRequestAndResponseHandler, LogRequestAndResponseHandler>(Lifestyle.Singleton);
         }
     }

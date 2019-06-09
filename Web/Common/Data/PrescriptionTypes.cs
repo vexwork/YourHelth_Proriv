@@ -1,4 +1,4 @@
-﻿namespace Common.Database.Dto
+﻿namespace Common.Data
 {
     public enum PrescriptionTypes
     {
@@ -7,16 +7,16 @@
         /// </summary>
         Drugs,
         /// <summary>
-        /// Массаж
+        /// Процедура
         /// </summary>
-        Massage,
+        Procedure,
         /// <summary>
-        /// Уколы
+        /// Анализ
         /// </summary>
-        Injections,
+        Analysis,
         /// <summary>
-        /// Перевязка
+        /// Проверка чего-либо (например, курил сегодня?)
         /// </summary>
-        Bandage
+        Question,
     }
 }

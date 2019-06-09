@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -18,7 +19,10 @@ namespace Common.Database.Dto
 
         [Required]
         public DateTime Time { get; set; }
-        
+
+        [Required]
+        public QuestState State { get; set; }
+
         [Required]
         public Prescription Prescription { get; set; }
     }

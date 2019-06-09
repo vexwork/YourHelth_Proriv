@@ -3,7 +3,7 @@ using System.Data.Entity.Infrastructure;
 using System.Data.Entity.SqlServer;
 using System.IO;
 
-namespace Common.Database.DataAccess.Implementation.Context
+namespace Common.Database.DataAccess.Implementation
 {
     internal sealed class DbConfigurationProvider : DbConfiguration
     {
