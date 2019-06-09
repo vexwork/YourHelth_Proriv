@@ -13,14 +13,13 @@ namespace Common.Database.Dto
         [Required]
         public Patient Patient { get; set; }
 
-        [Required]
+        //[Required]
         public Doctor Doctor { get; set; }
 
         [Required]
         public string Name { get; set; }
 
-        [Required]
-        public string Description { get; set; }
+        public List<Prescription> Prescriptions { get; set; }
 
         public List<Quest> Quests { get; set; }
     }

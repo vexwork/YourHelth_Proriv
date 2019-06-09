@@ -62,9 +62,9 @@ namespace WebApiApplication.Controllers
 
         [HttpPost]
         [Route("v1/add-prescription/")]
-        public async Task AddPrescriptionAsync( AddPrescriptionRequest request, CancellationToken cancellationToken)
+        public async Task AddPrescriptionAsync(AddConquestRequest request, CancellationToken cancellationToken)
         {
-            await _conquestControllerService.AddPrescriptionAsync(request, cancellationToken);
+            await _conquestControllerService.AddConquestAsync(request, cancellationToken);
         }
     }
 }

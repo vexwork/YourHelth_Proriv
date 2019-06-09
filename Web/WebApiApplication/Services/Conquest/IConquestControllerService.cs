@@ -6,6 +6,6 @@ namespace WebApiApplication.Services.Conquest
 {
     public interface IConquestControllerService
     {
-        Task AddPrescriptionAsync(AddPrescriptionRequest request, CancellationToken cancellationToken);
+        Task AddConquestAsync(AddConquestRequest request, CancellationToken cancellationToken);
     }
 }

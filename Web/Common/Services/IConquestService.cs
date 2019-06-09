@@ -11,6 +11,6 @@ namespace Common.Services
 {
     public interface IConquestService
     {
-        Task AddPrescriptionAsync(Guid patientId, Prescription prescription, CancellationToken cancellationToken);
+        Task AddConquestAsync(Conquest conquest, CancellationToken cancellationToken);
     }
 }
