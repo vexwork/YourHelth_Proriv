@@ -8,6 +8,7 @@ using System.Web;
 using WebApiApplication.Models.Prescriptions;
 using Common.Database.Dto;
 using WebApiApplication.Models.Conquests;
+using Common.Data;
 
 namespace WebApiApplication.Services.Conquest.Implementation
 {
@@ -53,6 +54,21 @@ namespace WebApiApplication.Services.Conquest.Implementation
         {
             return _conquestService
                 .CompleteConquestAsync(request.Guid, request.CompleteRate, cancellationToken);
+        }
+
+        public async Task<QuestsResponse> GetQuestsAsync(QuestsRequest request, CancellationToken cancellationToken)
+        {
+            var patient = await _patientService.GetPatientByGuidAsync(request.PatientId, cancellationToken);
+            var quests = await _conquestService.GetQuestsAsync(patient, request.State, cancellationToken);
+            return new QuestsResponse()
+            {
+                Quests = quests.Select(x => new QuestModel(){
+                    State = x.State,
+                    Id = x.Guid,
+                    Time = x.Time,
+                    PrescriptionTitle = x.Prescription?.Name,
+                }).ToList(),
+            };
         }
     }
 }

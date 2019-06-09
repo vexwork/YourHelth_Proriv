@@ -60,6 +60,10 @@
     <Compile Include="Models\Accounts\RegisterPatientStatus.cs" />
     <Compile Include="Models\Conquests\CompleteConquestRequest.cs" />
     <Compile Include="Models\Conquests\CompleteQuestRequest.cs" />
+    <Compile Include="Models\Conquests\ConquestsResponse.cs" />
+    <Compile Include="Models\Conquests\QuestModel.cs" />
+    <Compile Include="Models\Conquests\QuestsRequest.cs" />
+    <Compile Include="Models\Conquests\QuestsResponse.cs" />
     <Compile Include="Models\Patients\GetPatientResponse.cs" />
     <Compile Include="Models\Patients\PatientModel.cs" />
     <Compile Include="Models\Patients\SearchPatientsRequest.cs" />

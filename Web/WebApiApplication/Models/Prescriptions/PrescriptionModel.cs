@@ -13,16 +13,16 @@ namespace WebApiApplication.Models.Prescriptions
     [DataContract]
     public class PrescriptionModel
     {
-        [DataMember]
+        [DataMember(Name = "name")]
         public string Name { get; set; }
 
-        [DataMember]
+        [DataMember(Name = "type")]
         public PrescriptionTypes Type { get; set; }
 
-        [DataMember]
+        [DataMember(Name = "duration_in_days")]
         public int DurationInDays { get; set; }
-        
-        [DataMember]
+
+        [DataMember(Name = "action_times")]
         public List<TimeSpan> ActionTimes { get; set; }
     }
 }

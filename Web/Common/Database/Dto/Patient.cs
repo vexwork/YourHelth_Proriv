@@ -34,7 +34,7 @@ namespace Common.Database.Dto
         public double Rate { get; set; }
         
         [Required]
-        public DateTime BirthDate { get; set; }
+        public DateTime BirthDate { get; set; } 
         
 
     }

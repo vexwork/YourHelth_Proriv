@@ -59,6 +59,12 @@ namespace WebApiApplication.Controllers
                 .AddRandomPatientAsync(cancellationToken);
         }
 
+        /// <summary>
+        /// Генерирует конквест с квестами на основе назначений
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("v1/add-prescription/")]
         public async Task AddPrescriptionAsync(AddConquestRequest request, CancellationToken cancellationToken)

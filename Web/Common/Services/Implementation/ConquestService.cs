@@ -1,4 +1,5 @@
-﻿using Common.Database.DataAccess;
+﻿using Common.Data;
+using Common.Database.DataAccess;
 using Common.Database.Dto;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,42 @@ namespace Common.Services.Implementation
             _patientService = patientService;
         }
 
+        public Task<List<Quest>> GetWaitingQuestsAsync(Patient patient, CancellationToken cancellationToken)
+        {
+            return GetQuestsAsync(patient, state: QuestState.Waiting, cancellationToken);
+        }
+
+        public Task<List<Quest>> GetFailedQuestsAsync(Patient patient, CancellationToken cancellationToken)
+        {
+            return GetQuestsAsync(patient, state: QuestState.Failed, cancellationToken);
+        }
+
+        public Task<List<Quest>> GetPassedQuestsAsync(Patient patient, CancellationToken cancellationToken)
+        {
+            return GetQuestsAsync(patient, state: QuestState.Passed, cancellationToken);
+        }
+
+        public Task<List<Quest>> GetAllQuestsAsync(Patient patient, CancellationToken cancellationToken)
+        {
+            return GetQuestsAsync(patient, state: null, cancellationToken);
+        }
+
+        public Task<List<Quest>> GetQuestsAsync(Patient patient, QuestState? state, CancellationToken cancellationToken)
+        {
+            var quests = _context.Quest.Where(x => x.Conquest.Patient.Guid == patient.Guid).AsQueryable();
+            if(state != null)
+            {
+                quests = quests.Where(x => x.State == state);
+            }
+            return quests.OrderBy(x => x.Time).ToListAsync(cancellationToken);
+        }
+        
+
+        public Task<List<Conquest>> GetConquestsAsync(Patient patient, CancellationToken cancellationToken)
+        {
+            return _context.Conquest.Where(x => x.Patient == patient).ToListAsync();
+        }
+        
         public Task AddConquestAsync(Conquest conquest, CancellationToken cancellationToken)
         {
             return Task.Run(() =>

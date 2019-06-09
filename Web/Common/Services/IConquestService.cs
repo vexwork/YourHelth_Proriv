@@ -1,4 +1,5 @@
 ﻿
+using Common.Data;
 using Common.Database.Dto;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace Common.Services
         Conquest BuildConquest(Patient patient, DateTime beginTime, string name, List<Prescription> prescriptions);
 
         Task CompleteConquestAsync(Guid guid, int? completeRate, CancellationToken cancellationToken);
+
+        Task<List<Quest>> GetQuestsAsync(Patient patient, QuestState? state, CancellationToken cancellationToken);
     }
 }
-    

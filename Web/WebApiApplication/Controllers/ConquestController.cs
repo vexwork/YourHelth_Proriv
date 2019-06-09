@@ -40,5 +40,18 @@ namespace WebApiApplication.Controllers
             return _conquestControllerService
                 .CompleteConquestAsync(request, cancellationToken);
         }
+        }
+
+
+        /// <summary>
+        /// Запрос на квесты пациента
+        /// </summary>
+        [HttpPost]
+        [Route("v1/get-quests/")]
+        public Task<QuestsResponse> RegisterPatientAsync(QuestsRequest request,
+            CancellationToken cancellationToken)
+        {
+            return _conquestControllerService.GetQuestsAsync(request, cancellationToken);
+        }
     }
 }
