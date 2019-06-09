@@ -10,5 +10,6 @@ namespace WebApiApplication.Services.Conquest
     {
         Task AddConquestAsync(AddConquestRequest request, CancellationToken cancellationToken);
         Task<QuestsResponse> GetQuestsAsync(QuestsRequest request, CancellationToken cancellationToken);
+        Task<ConquestsResponse> GetConquestsAsync(ConquestsRequest request, CancellationToken cancellationToken);
     }
 }

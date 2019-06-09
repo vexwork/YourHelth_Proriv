@@ -39,19 +39,42 @@ namespace WebApiApplication.Services.Conquest.Implementation
             await _conquestService.AddConquestAsync(conquest, cancellationToken);
         }
 
+        public async Task<ConquestsResponse> GetConquestsAsync(ConquestsRequest request, CancellationToken cancellationToken)
+        {
+            var patient = await _patientService.GetPatientByGuidAsync(request.PatientId, cancellationToken);
+            var conquests = await _conquestService.GetConquestsAsync(patient, cancellationToken);
+            return new ConquestsResponse()
+            {
+                Conquests = conquests.Select(x =>
+                {
+                    return new ConquestModel()
+                    {
+                        Name = x.Name,
+                        Quests = WrapQuests(x.Quests),
+                    };
+                }).ToList()
+            };
+        }
+
         public async Task<QuestsResponse> GetQuestsAsync(QuestsRequest request, CancellationToken cancellationToken)
         {
             var patient = await _patientService.GetPatientByGuidAsync(request.PatientId, cancellationToken);
             var quests = await _conquestService.GetQuestsAsync(patient, request.State, cancellationToken);
             return new QuestsResponse()
             {
-                Quests = quests.Select(x => new QuestModel(){
-                    State = x.State,
-                    Id = x.Guid,
-                    Time = x.Time,
-                    PrescriptionTitle = x.Prescription?.Name,
-                }).ToList(),
+                Quests = WrapQuests(quests),
             };
+        }
+
+        private List<QuestModel> WrapQuests(List<Quest> quests)
+        {
+            return quests.Select(x => new QuestModel()
+            {
+                State = x.State,
+                Id = x.Guid,
+                Time = x.Time,
+                PrescriptionTitle = x.Prescription?.Name,
+            }).ToList();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -24,10 +25,21 @@ namespace WebApiApplication.Controllers
         /// </summary>
         [HttpPost]
         [Route("v1/get-quests/")]
-        public Task<QuestsResponse> RegisterPatientAsync(QuestsRequest request,
+        public Task<QuestsResponse> GetQuestsAsync(QuestsRequest request,
             CancellationToken cancellationToken)
         {
             return _conquestControllerService.GetQuestsAsync(request, cancellationToken);
+        }
+
+        /// <summary>
+        /// Запрос на конквесты пациента
+        /// </summary>
+        [HttpPost]
+        [Route("v1/get-conquests/")]
+        public Task<ConquestsResponse> GetConquestsAsync(ConquestsRequest request,
+            CancellationToken cancellationToken)
+        {
+            return _conquestControllerService.GetConquestsAsync(request, cancellationToken);
         }
     }
 }

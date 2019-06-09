@@ -22,7 +22,18 @@ namespace WebApiApplication.Models.Prescriptions
         [DataMember(Name = "duration_in_days")]
         public int DurationInDays { get; set; }
 
-        [DataMember(Name = "action_times")]
-        public List<TimeSpan> ActionTimes { get; set; }
+        [IgnoreDataMember]
+        public List<TimeSpan> ActionTimes => new List<TimeSpan>() { Time1, Time2, Time3 };
+        
+        #region 
+        [DataMember(Name = "time1")]
+        public TimeSpan Time1 { get; set; }
+
+        [DataMember(Name = "time2")]
+        public TimeSpan Time2 { get; set; }
+
+        [DataMember(Name = "time3")]
+        public TimeSpan Time3 { get; set; }
+        #endregion 
     }
 }

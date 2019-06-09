@@ -16,5 +16,7 @@ namespace Common.Services
         Conquest BuildConquest(Patient patient, DateTime beginTime, string name, List<Prescription> prescriptions);
 
         Task<List<Quest>> GetQuestsAsync(Patient patient, QuestState? state, CancellationToken cancellationToken);
+
+        Task<List<Conquest>> GetConquestsAsync(Patient patient, CancellationToken cancellationToken);
     }
 }

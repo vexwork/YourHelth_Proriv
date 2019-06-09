@@ -32,12 +32,19 @@ namespace Common.Database.DataAccess.Implementation
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Patient>()
-                .HasMany(c => c.Conquests)
-                .WithRequired(o => o.Patient);
             modelBuilder.Entity<Conquest>()
-                .HasMany(c => c.Quests)
-                .WithRequired(o => o.Conquest);
+                .HasMany(e => e.Prescriptions);
+
+            modelBuilder.Entity<Conquest>()
+                .HasMany(e => e.Quests)
+                .WithRequired(e => e.Conquest);
+            
+            modelBuilder.Entity<Patient>()
+                .HasMany(e => e.Conquests)
+                .WithRequired(e => e.Patient);
+
+            modelBuilder.Entity<Prescription>()
+                .HasMany(e => e.ActionTimes);
         }
     }
 }

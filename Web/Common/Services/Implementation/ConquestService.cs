@@ -55,7 +55,7 @@ namespace Common.Services.Implementation
 
         public Task<List<Conquest>> GetConquestsAsync(Patient patient, CancellationToken cancellationToken)
         {
-            return _context.Conquest.Where(x => x.Patient == patient).ToListAsync();
+            return _context.Conquest.Where(x => x.Patient.Guid == patient.Guid).ToListAsync();
         }
         
         public Task AddConquestAsync(Conquest conquest, CancellationToken cancellationToken)
