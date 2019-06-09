@@ -20,9 +20,10 @@ namespace Common.Services.Implementation
             _patientService = patientService;
         }
 
-        public async Task AddPrescriptionAsync(Guid conquestId, Prescription prescription, CancellationToken cancellationToken)
+        public async Task AddPrescriptionAsync(Guid patient, Prescription prescription, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            //todo на основании чего-то создать/открыть конквест
+            //todo в конквест добавить назначение
         }
     }
 }

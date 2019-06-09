@@ -10,7 +10,7 @@ namespace WebApiApplication.Models.Prescriptions
     public class AddPrescriptionRequest
     {
         [DataMember]
-        public Guid ConquestId { get; set; }
+        public Guid PatientId { get; set; }
 
         [DataMember]
         public PrescriptionModel Prescription { get; set; }

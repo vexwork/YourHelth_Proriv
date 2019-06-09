@@ -9,7 +9,7 @@ using WebApiApplication.Models.Prescriptions;
 
 namespace WebApiApplication.Services.Conquest.Implementation
 {
-    public class ConquestControllerService
+    public class ConquestControllerService : IConquestControllerService
     {
         private readonly IConquestService _conquestService;
 

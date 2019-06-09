@@ -60,6 +60,7 @@
     <Compile Include="Models\Prescriptions\PrescriptionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Conquest\Implementation\ConquestControllerService.cs" />
+    <Compile Include="Services\Conquest\IConquestControllerService.cs" />
     <Compile Include="Services\Logging\ILoggingService.cs" />
     <Compile Include="Services\Logging\Implementation\LoggingService.cs" />
     <Compile Include="Services\Patients\Implementation\PatientsControllerService.cs" />
