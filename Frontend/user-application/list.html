@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="robots" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Регистрация</title>
+    <link href="style/normalize.css" rel="shortcut icon">
+    <link href="style/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700&display=swap&subset=cyrillic" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header__icon">
+            <img src="/icon/cat-middle.svg" width="80%" alt=""/>
+        </div>
+        <div class="header__text">
+            Вы сейчас проходите лечение<br>
+            Хронический кашль и ОРВИ
+        </div>
+    </header>
+
+    <div class="tasks">
+        <div class="tasks__date">9 июня</div>
+
+        <div class="tasks__one" id="task1">
+            <div class="tasks__one__time">18:00</div>
+            <div class="tasks__one__bg">
+                <div class="tasks__one__data">
+                    <div class="tasks__one__title">
+                        Таблета аспирина
+                        <span class="color1"></span>
+                    </div>
+                    <div class="tasks__one__info">
+                        <span>Во время еды</span>
+                        <span>Через 9 ч., 02  мин.</span>
+                    </div>
+                </div>
+                <div class="tasks__one__bottom">
+                    <img src="/icon/icon-time-left.svg" width="13" height="13" alt=""/> Осталось 12 дней приема
+                </div>
+            </div>
+        </div>
+        <div class="tasks__one">
+            <div class="tasks__one__time">22:00</div>
+            <div class="tasks__one__bg">
+                <div class="tasks__one__data">
+                    <div class="tasks__one__title">
+                        Таблета аспирина
+                        <span class="color1"></span>
+                    </div>
+                    <div class="tasks__one__info">
+                        <span>Во время еды</span>
+                        <span>Через 9 ч., 02  мин.</span>
+                    </div>
+                </div>
+                <div class="tasks__one__bottom">
+                    <img src="/icon/icon-time-left.svg" width="13" height="13" alt=""/> Осталось 12 дней приема
+                </div>
+            </div>
+        </div>
+
+        <div class="tasks__date">10 июня</div>
+
+        <div class="tasks__one">
+            <div class="tasks__one__time">14:00</div>
+            <div class="tasks__one__bg">
+                <div class="tasks__one__data">
+                    <div class="tasks__one__title">
+                        Таблета аспирина
+                        <span class="color1"></span>
+                    </div>
+                    <div class="tasks__one__info">
+                        <span>Во время еды</span>
+                        <span>Через 9 ч., 02  мин.</span>
+                    </div>
+                </div>
+                <div class="tasks__one__bottom">
+                    <img src="/icon/icon-time-left.svg" width="13" height="13" alt=""/> Осталось 12 дней приема
+                </div>
+            </div>
+        </div>
+        <div class="tasks__one">
+            <div class="tasks__one__time">18:00</div>
+            <div class="tasks__one__bg">
+                <div class="tasks__one__data">
+                    <div class="tasks__one__title">
+                        Таблета аспирина
+                        <span class="color1"></span>
+                    </div>
+                    <div class="tasks__one__info">
+                        <span>Во время еды</span>
+                        <span>Через 9 ч., 02  мин.</span>
+                    </div>
+                </div>
+                <div class="tasks__one__bottom">
+                    <img src="/icon/icon-time-left.svg" width="13" height="13" alt=""/> Осталось 12 дней приема
+                </div>
+            </div>
+        </div>
+        <div class="tasks__one">
+            <div class="tasks__one__time">22:00</div>
+            <div class="tasks__one__bg">
+                <div class="tasks__one__data">
+                    <div class="tasks__one__title">
+                        Таблета аспирина
+                        <span class="color1"></span>
+                    </div>
+                    <div class="tasks__one__info">
+                        <span>Во время еды</span>
+                        <span>Через 9 ч., 02  мин.</span>
+                    </div>
+                </div>
+                <div class="tasks__one__bottom">
+                    <img src="/icon/icon-time-left.svg" width="13" height="13" alt=""/> Осталось 12 дней приема
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="popup">
+        <header class="header">
+            <div class="popup__time">18:00</div>
+            <div class="popup__date">Суббота, 8 июня</div>
+            <div class="popup__image">
+                <img src="/images/tables.png" alt=""/>
+            </div>
+            <div class="popup__name">Примите 1 таблетку «Фарингосепт»</div>
+            <div class="popup__description">Прием во время еды</div>
+        </header>
+        <div class="popup__btns">
+            <button class="btn btn-red">Отказ</button>
+            <button class="btn btn-green">Принял</button>
+        </div>
+        <div class="popup__close">
+            <a href="#" onclick="$('.popup').fadeOut(300);return false;">Напомнить через 1 час</a>
+        </div>
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
+</body>
+</html>
