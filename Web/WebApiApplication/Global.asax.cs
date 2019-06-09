@@ -8,6 +8,7 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using SimpleInjector;
 using WebApiApplication.Configure;
+using WebApiApplication.Filters;
 using WebApiApplication.Handlers;
 
 namespace WebApiApplication
@@ -32,6 +33,7 @@ namespace WebApiApplication
             config.Formatters.JsonFormatter.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
            
             config.MessageHandlers.Add(new LogRequestAndResponseHandler());
+            config.Filters.Add(new GlobalExceptionHandlerFilterAttribute());
         }
 
 

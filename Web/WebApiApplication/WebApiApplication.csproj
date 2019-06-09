@@ -49,8 +49,10 @@
         <Compile Include="App_Start\SimpleInjectorWebApiInitializer.cs" />
         <Compile Include="App_Start\SwaggerConfig.cs" />
         <Compile Include="Configure\WebApiConfig.cs" />
+        <Compile Include="Controllers\AccountsController.cs" />
         <Compile Include="Controllers\HomeController.cs" />
         <Compile Include="Controllers\PatientsController.cs" />
+        <Compile Include="Filters\GlobalExceptionHandlerFilterAttribute.cs" />
         <Compile Include="Global.asax.cs">
             <DependentUpon>Global.asax</DependentUpon>
         </Compile>
